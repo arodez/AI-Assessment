@@ -1,0 +1,11 @@
+name,email,team,course,course_status,deadline
+Ana Torres,ana.torres@example.com,Platform,Intro to AI Agents,completed,2026-06-30
+Luis Mendoza,luis.mendoza@example.com,Platform,Intro to AI Agents,pending,2026-06-15
+Sofia Reyes,sofia.reyes@example.com,Data,LLM Concepts,in_progress,2026-08-01
+Diego Fuentes,diego.fuentes@example.com,Data,LLM Concepts,pending,2026-06-20
+Camila Ortiz,camila.ortiz@example.com,Mobile,AI-Assisted Coding,completed,2026-07-01
+Jorge Salinas,jorge.salinas@example.com,Mobile,AI-Assisted Coding,pending,2026-07-14
+Valeria Nunez,valeria.nunez@example.com,Platform,Vibe Coding with Replit,in_progress,2026-07-10
+Emilio Castro,emilio.castro@example.com,Data,Vibe Coding with Replit,completed,2026-05-30
+Renata Vega,renata.vega@example.com,Mobile,LLM Concepts,pending,2026-08-15
+Hector Lima,hector.lima@example.com,Platform,AI-Assisted Coding,in_progress,2026-06-01
