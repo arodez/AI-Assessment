@@ -2,7 +2,7 @@
 
 Hands-on assessment for the **Applied AI for Coders** track (DataCamp). It verifies that you can *apply* AI-assisted development skills — prompting, tool workflows, and verification — not just recall concepts.
 
-Any AI assistant is allowed (GitHub Copilot, Cursor, Windsurf, Claude, ChatGPT, Replit). **The workflow is what is evaluated, not the tool.**
+Any AI assistant is allowed (GitHub Copilot, Cursor, Windsurf, Replit). **The workflow is what is evaluated, not the tool.**
 
 ## Structure
 
