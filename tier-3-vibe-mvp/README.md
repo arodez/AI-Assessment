@@ -4,9 +4,9 @@
 
 ## Scenario
 
-The communities team needs an MVP of the **Community Events Hub**: a mini-app to publish internal events (study groups, AMAs, workshops) and let people sign up. Nothing exists yet — no repo, no design, no backend. You must build it **from scratch, driving the AI with natural language** (vibe coding), using the tool of your choice: Replit, Claude, ChatGPT, Cursor, Windsurf, v0, etc.
+The communities team needs an MVP of the **Community Events Hub**: a mini-app to publish internal events (study groups, AMAs, workshops) and let people sign up. Nothing exists yet — no repo, no design, no backend. You must build it **from scratch, driving the AI with natural language** (vibe coding), using the tool of your choice: Replit, Claude, Cursor, Windsurf, etc.
 
-The goal is NOT to prove you can code the app by hand. It's to prove you can **specify, iterate, verify, and secure** an AI-generated product — the whole track in a single workflow.
+The goal is to prove you can **specify, iterate, verify, and secure** an AI-generated product — the whole track in a single workflow.
 
 ## Functional requirements (the MVP)
 
@@ -20,19 +20,17 @@ Simple persistence (in-memory is fine for the MVP if documented as a limitation;
 ## Process requirements (this is what gets graded)
 
 ### 1. Product brief first — `BRIEF.md`
-**Before generating a single line of code**, write your complete initial prompt: what is being built, for whom, requirements, technical constraints, expected edge cases, and acceptance criteria. This brief is a graded deliverable on its own — it is your prompting exam.
+**Before generating a single line of code**, write your complete initial prompt: what is being built, for whom, requirements, technical constraints, expected edge cases, and acceptance criteria. 
 
-### 2. Documented iteration
-At least **3 visible refinement cycles** in your `PROMPT_LOG.md`: what came out wrong or incomplete, what correction prompt you sent, and what changed. An MVP that "came out perfect on the first prompt" does not exist — and will be graded accordingly.
 
-### 3. Security pass before "sharing" — `SECURITY_CHECK.md`
+### 2. Security pass before "sharing" — `SECURITY_CHECK.md`
 Apply the vibe-coding course checklist before considering the MVP deliverable:
 - No secrets/API keys in the code.
 - Input validation (what happens with a malformed email, a negative capacity, an empty title?).
 - No data exposure: can an attendee see everyone else's emails? Should they?
 Document what you checked, what you found, and what you fixed.
 
-### 4. Verification — `VERIFICATION_NOTE.md`
+### 3. Verification — `VERIFICATION_NOTE.md`
 Test and document at least these 3 flows: (a) successful sign-up, (b) rejection when full, (c) rejection of a duplicate email. Include at least one mistake the AI made and how you caught it.
 
 ## Deliverables
