@@ -1,6 +1,6 @@
 # Verification Note
 
-> 5–15 lines. Honesty is graded; "the AI made no mistakes" is almost never true and reads as a red flag.
+> 5–8 lines. Honesty is graded; "the AI made no mistakes" is almost never true and reads as a red flag.
 
 **1. What the AI got wrong (or almost wrong):**
 

@@ -13,8 +13,10 @@ A sample dataset is provided at [`data/training_data.csv`](data/training_data.cs
 ## Functional requirements
 
 1. **Ingest** — upload/load a CSV (`name,email,team,course,course_status,deadline`). Validate it and report rejected rows to the user — never silently drop data.
-2. **Dashboard** — completion percentage per team and per course; list of engineers overdue (status not `completed` and deadline in the past).
-3. **Reminders** — for any overdue engineer, generate a polite reminder message (template-based or AI-generated — your choice; if AI-generated, the API key must not be hardcoded).
+2. **Dashboard** — completion percentage per team and per course; list of engineers overdue.
+   - *Overdue Ruling:* An engineer is overdue if their status is not `completed` and `deadline < system date at runtime` (strict less-than comparison). A deadline equal to the current system date is **not** overdue. The app must query the live system date at runtime (no hardcoded dates).
+3. **Reminders** — for any overdue engineer, generate a polite reminder message (template-based or AI-generated).
+   - *Security Requirement:* If using AI-generated reminders, API keys must be loaded from environment variables or a `.env` file loaded at runtime. The `.env` file must be listed in `.gitignore` and must never be committed to git or appear in git history.
 4. **Persistence** — the last uploaded dataset survives a restart (file or SQLite; no external DB required).
 
 ## Engineering requirements
@@ -38,7 +40,7 @@ A sample dataset is provided at [`data/training_data.csv`](data/training_data.cs
 
 ## Deliverables
 
-A link to your repo containing the app plus `AI_USAGE.md`, `PROMPT_LOG.md`, and `VERIFICATION_NOTE.md` (templates in [`../templates/`](../templates/)).
+A link to your repo containing the app plus `AI_USAGE.md`, `PROMPT_LOG.md` (which must include the **Tool & Workflow Note** at the top), and `VERIFICATION_NOTE.md` (templates in [`../templates/`](../templates/)).
 
 ## Rubric (100 pts)
 
