@@ -67,6 +67,18 @@ SQLite file lives at `data/events.db` (created automatically on first run).
   event at the database level, in addition to an app-level check that
   produces a clean error message.
 
+The app runs SQLite in **WAL journal mode** (`db.pragma('journal_mode = WAL')`
+in `src/db.js`), by design — it lets reads and writes proceed concurrently
+without locking, which suits Express handling multiple requests at once. One
+side effect worth knowing if you're inspecting the database directly (e.g.
+with a VS Code SQLite extension): recent writes can briefly live in the
+`data/events.db-wal` sidecar file before being checkpointed back into
+`events.db`. Any real SQLite client (VS Code's **SQLite Viewer** extension,
+`sqlite3` CLI, SQLTools, etc.) reads through the WAL automatically, so this
+is transparent in practice — but if you ever inspect the raw `.db` file with
+a tool that doesn't understand WAL, or the browser looks stale, stop the
+server first so everything checkpoints to the main file.
+
 ## Known limitations (documented per the MVP brief)
 
 - **Persistence is a single SQLite file** — fine for an MVP, not designed for
