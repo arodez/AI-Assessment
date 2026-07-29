@@ -19,6 +19,9 @@ Simple persistence (in-memory is fine for the MVP if documented as a limitation;
 
 ## Process requirements (this is what gets graded)
 
+### 0. Create a new folder called — `solution`
+This will be the mvp app folder meaning all deliverables will put inside it
+
 ### 1. Product brief first — `BRIEF.md`
 **Before generating a single line of code**, write your complete initial prompt: what is being built, for whom, requirements, technical constraints, expected edge cases, and acceptance criteria. 
 

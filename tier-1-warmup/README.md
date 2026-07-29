@@ -18,7 +18,7 @@ Run your script from the command line: `python solution.py` (or equivalent for y
 
 ## Deliverables
 
-Place in this folder:
+Create a folder called `solution` and place in that folder:
 
 - `solution.py` (or your language of choice) — the final working code, runnable from the command line
 - `PROMPT_LOG.md` — every prompt sent to the AI, in order; includes a **Tool & Workflow Note** (which tool, which mode(s), any surprises or limitations encountered)

@@ -12,7 +12,7 @@ A sample input file is provided at [`data/sample_input.csv`](data/sample_input.c
 
 1. **Understand** — use an AI assistant to analyze the script. Produce a short `ANALYSIS.md` (10–20 lines) describing what it does, its inputs/outputs, and its structure.
 2. **Find the bugs** — the script contains **4 planted defects** (logic, data handling, and robustness). Identify at least 3. Document each in `BUGS.md`: symptom, root cause, fix.
-3. **Test** — write automated tests (`pytest` or `unittest`) in `test_report_generator.py` that target the fixed implementation (`report_generator_fixed.py`) to verify all bug fixes and refactored behavior (minimum 5 test cases). The tests must be designed such that they would fail on the original buggy code.
+3. **Test** — write automated tests (`pytest` or `unittest`) in a new file called `test_report_generator.py` that target the fixed implementation (write it to a new file called `report_generator_fixed.py`) to verify all bug fixes and refactored behavior (minimum 5 test cases). The tests must be designed such that they would fail on the original buggy code on `report_generator.py`.
 4. **Refactor** — deliver a corrected, readable `report_generator_fixed.py`: type hints, docstrings, no bare excepts, no global mutable state. Behavior (aside from bug fixes) must be preserved.
 
 ## Constraints
@@ -22,7 +22,7 @@ A sample input file is provided at [`data/sample_input.csv`](data/sample_input.c
 
 ## Deliverables
 
-Place in this folder:
+Create a folder called `solution` and place in that folder:
 
 - `ANALYSIS.md` · `BUGS.md` · `test_report_generator.py` · `report_generator_fixed.py`
 - `PROMPT_LOG.md` (which includes the mandatory **Tool & Workflow Note** at the top) · `VERIFICATION_NOTE.md` (templates in [`../templates/`](../templates/))
