@@ -87,3 +87,29 @@ browser (Playwright) driving real requests through the UI.
   internal event sign-ups.
 - **In-memory rate of duplicate/overlap checks** relies on SQLite being
   single-process; this MVP is not designed to be horizontally scaled.
+- **Organizer session cookie is stateless and survives a server restart.**
+  `cookie-session` (`src/server.js`) signs the whole session into the cookie
+  itself — nothing about it is tracked server-side. As long as
+  `SESSION_SECRET` stays the same and the 8h `maxAge` hasn't elapsed, an
+  existing organizer cookie stays valid across restarts, deploys, or crashes.
+  This was a deliberate scope decision, not an oversight — considered and
+  deferred as out of scope for this MVP. Options considered, in increasing
+  complexity, for a future pass:
+  1. **Boot-id binding (recommended if this is ever picked up).** Generate a
+     random value once per process start (`crypto.randomBytes`), store it in
+     the session at login, and require it to match on every request in
+     `requireOrganizer`. Any restart invalidates every existing session. No
+     new dependency; touches `server.js`, `middleware/requireOrganizer.js`,
+     and the login route in `routes/organizer.js` — roughly 5 lines total.
+  2. **Boot-id + password-rotation binding.** Same as above, plus bind the
+     session to a hash of the current `ORGANIZER_PASSWORD`, so rotating the
+     password in `.env` also invalidates old cookies even without a restart.
+  3. **Server-side session store.** Move to an in-memory map keyed by an
+     opaque session id in the cookie, so an explicit "invalidate all
+     sessions now" action can be added independent of a restart. More
+     moving parts than options 1–2; still clears itself on restart since
+     it's in-memory (would need a persistent store to survive restarts on
+     purpose, which isn't a goal here).
+  4. **Shorten `maxAge` / add sliding expiration.** Doesn't address
+     "survives restart" at all, only shrinks the overall exposure window —
+     the simplest possible change if that's the only concern later.

@@ -83,6 +83,12 @@ SQLite file lives at `data/events.db` (created automatically on first run).
 - **No rate limiting** on the organizer login endpoint.
 - **No CORS support** — the API is intentionally only reachable from this
   app's own frontend (same-origin), not from external scripts/sites.
+- **Organizer session cookie is stateless and survives a server restart** —
+  it's a signed `cookie-session`, not backed by any server-side store, so
+  restarting the server does not force organizers to log in again as long as
+  `SESSION_SECRET` is unchanged and the cookie hasn't hit its 8h `maxAge`.
+  See `SECURITY_CHECK.md` for the invalidation options considered and the
+  recommended fix if this is ever picked up.
 
 ## Process documentation
 

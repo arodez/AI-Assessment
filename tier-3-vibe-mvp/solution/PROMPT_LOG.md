@@ -8,11 +8,13 @@
 agentic session rather than a turn-by-turn chat — most "correction cycles"
 below came from the agent's own build-and-verify loop (running the real app
 in a headless browser and catching bugs from the actual behavior) rather than
-a human re-prompting after every response. The two most notable surprises:
+a human re-prompting after every response. The most notable surprises:
 `better-sqlite3`'s prebuilt binary didn't support the installed Node version
-and had to be upgraded before anything would run at all, and a self-inflicted
+and had to be upgraded before anything would run at all, a self-inflicted
 double-escaping bug that only became visible once the app was actually driven
-in a browser rather than just read as code.
+in a browser rather than just read as code, and a timezone bug that neither
+automated test caught — it took the human product owner's own manual test
+against their real clock to surface it.
 
 ---
 
@@ -100,3 +102,26 @@ the script never executes.
 XSS-safe on its own). Removed the redundant server-side escaping from
 `validation.js`, `routes/events.js`, and `routes/signup.js`. Re-ran the same
 payloads: still doesn't execute, now displays as plain typed text.
+
+### Prompt 8 — user's own manual test surfaces a timezone bug
+**Mode:** chat (human-in-the-loop, after handoff)
+```
+I just tested the app and seems okay, just I would like to review where the
+current time. (for signups) is being taken. Locally its 10:04 am but it
+wrote down 4:03 PM
+```
+**Outcome:** modified — this is the one correction cycle in the whole build
+that came from a human manually using the app rather than from an automated
+script. Root cause: `created_at` columns defaulted to SQLite's
+`datetime('now')`, which returns UTC formatted as `"YYYY-MM-DD HH:MM:SS"`
+(no `T`/`Z`); the browser's `new Date(...)` parses that non-ISO string as
+already-local time, so the raw UTC value displayed unconverted — exactly the
+reporter's local UTC offset. Also found and fixed the same root cause's
+second symptom: the public list's `event_date >= datetime('now')` comparison
+mixed that space-separated format against proper ISO strings, which could
+misorder same-day events due to ASCII sort order (`'T'` > `' '`). Fixed both
+in `src/db.js` and `src/routes/events.js` by switching every "now" reference
+to `strftime('%Y-%m-%dT%H:%M:%fZ', 'now')`. Verified by inserting a fresh
+attendee and comparing its displayed time against the real clock (exact
+match), and by inserting a past-today and future-today event and confirming
+only the future one appears in the public list.

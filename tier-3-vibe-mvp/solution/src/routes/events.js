@@ -28,7 +28,7 @@ router.get('/events', (req, res) => {
       `SELECT e.*, COUNT(a.id) AS signup_count
        FROM events e
        LEFT JOIN attendees a ON a.event_id = e.id
-       WHERE e.event_date >= datetime('now')
+       WHERE e.event_date >= strftime('%Y-%m-%dT%H:%M:%fZ', 'now')
        GROUP BY e.id
        ORDER BY e.event_date ASC`
     )

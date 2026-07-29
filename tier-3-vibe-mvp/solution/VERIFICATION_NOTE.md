@@ -28,8 +28,10 @@ with `400` and a clear message), CSV export, and confirmed the public
 
 ## 1. What the AI got wrong (or almost wrong)
 
-Two real mistakes, both caught by actually driving the app rather than just
-reading the code:
+Three real mistakes. The first two were caught by driving the app with an
+automated headless browser; the third was caught by the product owner doing
+their own manual pass in a real browser — proof that automated checks alone
+weren't enough:
 
 **Mistake 1 — success message was invisible in practice.** The RSVP form
 showed a success message, then immediately called `loadEvents()` to refresh
@@ -50,19 +52,45 @@ screenshot taken during the XSS test — the payload never executed either
 way, but the output was wrong. Removed the redundant server-side escaping,
 keeping `textContent` as the single sanitization layer.
 
+**Mistake 3 — attendee sign-up times displayed 6 hours off.** The product
+owner manually tested the app (local time 10:04 AM) and noticed the
+organizer view showed the sign-up as happening at "4:03 PM." Root cause:
+`created_at` columns defaulted to SQLite's `datetime('now')`, which returns
+**UTC** but formatted as `"2026-07-29 16:03:00"` — space-separated, no `Z`.
+The browser's `new Date(...)` parses that non-ISO format as if it were
+*already local time* (no conversion applied), so the raw UTC value got
+displayed unconverted, off by exactly the local UTC offset. A related latent
+bug from the same root cause: the public list's `WHERE event_date >=
+datetime('now')` compared a proper ISO string (with `T`/`Z`) against that
+same space-separated `datetime('now')` value as plain text — since `'T'`
+sorts after `' '` in ASCII, an event dated *earlier today* that had already
+passed could still incorrectly sort as "upcoming." Fixed both by switching
+every "now" reference to `strftime('%Y-%m-%dT%H:%M:%fZ', 'now')`, matching
+the ISO format used everywhere else in the app.
+
 ## 2. How I caught it
 
-Both were caught by driving the actual running app end-to-end with a headless
-browser and screenshotting each step, not by reading the code or trusting API
-responses alone — mistake 1 in particular would have looked "correct" from
-the API's point of view (200, right message body) while being broken for a
-real user.
+Mistakes 1 and 2 were caught by driving the actual running app end-to-end
+with a headless browser and screenshotting each step, not by reading the
+code or trusting API responses alone — mistake 1 in particular would have
+looked "correct" from the API's point of view (200, right message body)
+while being broken for a real user. Mistake 3 was caught by the product
+owner's own manual testing pass, comparing the app's displayed time against
+their actual local clock — a discrepancy neither of my automated checks
+would have surfaced, since they only asserted formatting/ordering
+correctness relative to whatever the server considered "now," not
+correctness against a real external clock.
 
 ## 3. How I confirmed the final result is correct
 
-Re-ran the full Playwright script after each fix against a freshly reset
-SQLite database: success message now stays visible for ~1.5s before the list
-refreshes (screenshot confirms it), and the XSS-payload title now renders as
-plain, literal text matching what was typed, with `window.__xss` never set —
-confirming the script still doesn't execute after removing the redundant
-escaping.
+Re-ran the full Playwright script after fixes 1 and 2 against a freshly
+reset SQLite database: success message now stays visible for ~1.5s before
+the list refreshes (screenshot confirms it), and the XSS-payload title now
+renders as plain, literal text matching what was typed, with `window.__xss`
+never set — confirming the script still doesn't execute after removing the
+redundant escaping. For fix 3, inserted a fresh attendee row and directly
+compared `new Date(row.created_at).toLocaleString()` against
+`new Date().toLocaleString()` at insert time — they matched exactly. Also
+confirmed the same-day ordering fix by inserting one event 1 hour in the
+past and one 5 hours in the future on the same calendar day: the public list
+now correctly shows only the future one.

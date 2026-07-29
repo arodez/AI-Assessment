@@ -18,7 +18,7 @@ db.exec(`
     description TEXT NOT NULL DEFAULT '',
     event_date TEXT NOT NULL,
     capacity INTEGER NOT NULL CHECK (capacity > 0),
-    created_at TEXT NOT NULL DEFAULT (datetime('now'))
+    created_at TEXT NOT NULL DEFAULT (strftime('%Y-%m-%dT%H:%M:%fZ', 'now'))
   );
 
   CREATE TABLE IF NOT EXISTS attendees (
@@ -26,7 +26,7 @@ db.exec(`
     event_id INTEGER NOT NULL REFERENCES events(id) ON DELETE CASCADE,
     name TEXT NOT NULL,
     email TEXT NOT NULL,
-    created_at TEXT NOT NULL DEFAULT (datetime('now')),
+    created_at TEXT NOT NULL DEFAULT (strftime('%Y-%m-%dT%H:%M:%fZ', 'now')),
     UNIQUE (event_id, email)
   );
 `);
