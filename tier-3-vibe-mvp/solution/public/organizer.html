@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Organizer — Community Events Hub</title>
+<link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <h1>Organizer View</h1>
+  <nav><a href="index.html">Public event list</a></nav>
+
+  <div id="login-section" class="top-form" style="display:none;">
+    <h3>Organizer login</h3>
+    <form id="login-form" class="inline">
+      <input type="password" id="password" placeholder="Organizer password" required>
+      <button type="submit">Log in</button>
+    </form>
+    <p id="login-message" class="message"></p>
+  </div>
+
+  <div id="dashboard" style="display:none;">
+    <div class="top-form">
+      <h3>Create event</h3>
+      <form id="create-form">
+        <div class="field-group">
+          <label for="title">Title</label>
+          <input type="text" id="title" required>
+        </div>
+        <div class="field-group">
+          <label for="description">Description</label>
+          <textarea id="description"></textarea>
+        </div>
+        <div class="field-group">
+          <label for="event_date">Date and time</label>
+          <input type="datetime-local" id="event_date" required>
+        </div>
+        <div class="field-group">
+          <label for="capacity">Capacity</label>
+          <input type="number" id="capacity" min="1" step="1" required>
+        </div>
+        <button type="submit">Create event</button>
+        <button type="button" id="logout-btn" class="secondary">Log out</button>
+      </form>
+      <p id="create-message" class="message"></p>
+    </div>
+
+    <div id="events-list"></div>
+  </div>
+
+  <script src="organizer.js"></script>
+</body>
+</html>

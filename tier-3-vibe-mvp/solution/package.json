@@ -1,0 +1,16 @@
+{
+  "name": "community-events-hub",
+  "version": "1.0.0",
+  "description": "Tier 3 vibe-coding MVP: publish internal events and let people RSVP.",
+  "main": "src/server.js",
+  "type": "commonjs",
+  "scripts": {
+    "start": "node src/server.js"
+  },
+  "dependencies": {
+    "better-sqlite3": "^13.0.2",
+    "cookie-session": "^2.1.0",
+    "dotenv": "^16.4.5",
+    "express": "^4.19.2"
+  }
+}
