@@ -1,0 +1,539 @@
+2026-07-14T08:55:00.228Z [INFO] api-gateway: Handled GET /health 304 74ms req_id=571b3
+2026-07-14T08:55:04.620Z [INFO] api-gateway: Connected to shared_db_pool (max_size=50, host=db-primary.internal)
+2026-07-14T08:55:06.621Z [INFO] payment-service: Connected to shared_db_pool (max_size=50, host=db-primary.internal)
+2026-07-14T08:55:08.604Z [INFO] api-gateway: Handled GET /v1/users/{id} 304 143ms req_id=2eab9
+2026-07-14T08:55:08.986Z [INFO] inventory-sync-worker: Connected to shared_db_pool (max_size=50, host=db-primary.internal)
+2026-07-14T08:55:10.765Z [INFO] auth-service: Connected to session_store (redis://auth-cache.internal:6379)
+2026-07-14T08:55:20.517Z [INFO] api-gateway: Handled GET /health 200 59ms req_id=53f9a
+2026-07-14T08:55:26.558Z [INFO] inventory-sync-worker: Handled GET /v1/products 304 170ms req_id=cbf40
+2026-07-14T08:55:38.890Z [INFO] payment-service: Handled GET /v1/orders/{id} 201 75ms req_id=e7a0d
+2026-07-14T08:55:44.159Z [INFO] payment-service: Handled GET /v1/users/{id} 200 91ms req_id=5f8c9
+2026-07-14T08:55:53.367Z [INFO] order-service: Handled GET /health 200 101ms req_id=312c6
+2026-07-14T08:56:04.127Z [INFO] inventory-sync-worker: Handled POST /v1/cart 200 121ms req_id=a1b03
+2026-07-14T08:56:16.906Z [INFO] api-gateway: Handled POST /v1/checkout 200 164ms req_id=b6c14
+2026-07-14T08:56:27.677Z [INFO] inventory-sync-worker: Handled GET /v1/products 304 21ms req_id=24252
+2026-07-14T08:56:36.284Z [INFO] order-service: Handled GET /health 200 29ms req_id=79b9f
+2026-07-14T08:56:49.686Z [INFO] order-service: Handled GET /v1/products 200 94ms req_id=4e0c4
+2026-07-14T08:56:59.746Z [INFO] api-gateway: Handled POST /v1/checkout 304 47ms req_id=a1276
+2026-07-14T08:57:08.704Z [INFO] payment-service: Handled GET /v1/orders/{id} 200 73ms req_id=bc410
+2026-07-14T08:57:22.841Z [INFO] payment-service: Handled GET /v1/users/{id} 200 18ms req_id=530ce
+2026-07-14T08:57:28.935Z [INFO] order-service: Handled GET /v1/orders/{id} 200 20ms req_id=4e6cf
+2026-07-14T08:57:39.469Z [INFO] payment-service: Handled GET /v1/users/{id} 200 105ms req_id=bcfbf
+2026-07-14T08:57:47.269Z [INFO] order-service: Handled GET /v1/products 200 147ms req_id=a2646
+2026-07-14T08:57:59.521Z [INFO] inventory-sync-worker: Handled GET /v1/orders/{id} 200 60ms req_id=3bd3b
+2026-07-14T08:58:12.642Z [INFO] api-gateway: Handled GET /v1/catalog/search 200 32ms req_id=3f8a9
+2026-07-14T08:58:20.610Z [INFO] catalog-service: Handled POST /v1/checkout 200 102ms req_id=7a1bc
+2026-07-14T08:58:33.738Z [INFO] inventory-sync-worker: Handled POST /v1/cart 201 6ms req_id=c6910
+2026-07-14T08:58:40.114Z [INFO] inventory-sync-worker: Handled GET /v1/catalog/search 200 168ms req_id=6f7fb
+2026-07-14T08:58:50.896Z [INFO] catalog-service: Handled GET /v1/products 200 4ms req_id=d1450
+2026-07-14T08:59:00.891Z [INFO] inventory-sync-worker: Handled GET /v1/catalog/search 200 133ms req_id=33a7b
+2026-07-14T08:59:10.780Z [INFO] inventory-sync-worker: Handled POST /v1/checkout 200 43ms req_id=7822d
+2026-07-14T08:59:18.331Z [INFO] inventory-sync-worker: Handled GET /v1/catalog/search 201 4ms req_id=b1be6
+2026-07-14T08:59:31.059Z [INFO] api-gateway: Handled GET /health 200 82ms req_id=55b6b
+2026-07-14T08:59:40.070Z [INFO] inventory-sync-worker: Handled GET /health 200 128ms req_id=e950e
+2026-07-14T08:59:54.169Z [INFO] payment-service: Handled GET /v1/products 304 125ms req_id=a529e
+2026-07-14T09:00:04.951Z [INFO] inventory-sync-worker: Handled GET /v1/catalog/search 201 112ms req_id=4ea26
+2026-07-14T09:00:18.665Z [INFO] payment-service: Handled GET /v1/users/{id} 200 106ms req_id=c45da
+2026-07-14T09:00:29.230Z [INFO] catalog-service: Handled POST /v1/checkout 200 34ms req_id=57e0b
+2026-07-14T09:00:36.602Z [INFO] order-service: Handled GET /health 201 145ms req_id=5352c
+2026-07-14T09:00:45.234Z [INFO] api-gateway: Handled GET /health 304 165ms req_id=277c5
+2026-07-14T09:00:52.243Z [INFO] api-gateway: Handled GET /v1/catalog/search 200 22ms req_id=9c09b
+2026-07-14T09:01:02.957Z [INFO] catalog-service: Handled GET /v1/products 201 37ms req_id=d197a
+2026-07-14T09:01:15.096Z [INFO] payment-service: Handled GET /v1/catalog/search 200 108ms req_id=4928b
+2026-07-14T09:01:22.884Z [INFO] catalog-service: Handled POST /v1/cart 200 109ms req_id=8ff8e
+2026-07-14T09:01:28.882Z [INFO] api-gateway: Handled GET /health 200 90ms req_id=e55da
+2026-07-14T09:01:35.143Z [INFO] payment-service: Handled GET /v1/products 200 141ms req_id=8b425
+2026-07-14T09:01:47.453Z [INFO] payment-service: Handled POST /v1/cart 200 67ms req_id=2bb66
+2026-07-14T09:02:01.015Z [INFO] api-gateway: Handled GET /health 304 142ms req_id=ee6fe
+2026-07-14T09:02:08.218Z [INFO] payment-service: Handled GET /v1/products 200 128ms req_id=93a44
+2026-07-14T09:02:20.271Z [INFO] api-gateway: Handled GET /v1/products 200 4ms req_id=7c5ca
+2026-07-14T09:02:33.735Z [INFO] order-service: Handled GET /v1/orders/{id} 304 146ms req_id=c1da6
+2026-07-14T09:02:46.593Z [INFO] payment-service: Handled GET /v1/products 200 59ms req_id=2762c
+2026-07-14T09:03:00.598Z [INFO] api-gateway: Handled GET /v1/users/{id} 200 18ms req_id=25402
+2026-07-14T09:03:13.983Z [INFO] inventory-sync-worker: Handled GET /v1/catalog/search 201 44ms req_id=26f9a
+2026-07-14T09:03:27.069Z [INFO] api-gateway: Handled GET /v1/catalog/search 200 21ms req_id=b0be3
+2026-07-14T09:03:36.608Z [INFO] catalog-service: Handled GET /health 201 67ms req_id=ac9e0
+2026-07-14T09:03:42.578Z [INFO] inventory-sync-worker: Handled GET /health 200 172ms req_id=add58
+2026-07-14T09:03:56.321Z [INFO] order-service: Handled POST /v1/cart 200 175ms req_id=cfc25
+2026-07-14T09:04:05.307Z [INFO] order-service: Handled GET /v1/orders/{id} 200 175ms req_id=bda98
+2026-07-14T09:04:18.636Z [INFO] order-service: Handled GET /v1/catalog/search 200 6ms req_id=8dbc3
+2026-07-14T09:04:25.135Z [INFO] api-gateway: Handled POST /v1/checkout 200 133ms req_id=5c4e2
+2026-07-14T09:04:36.448Z [INFO] api-gateway: Handled GET /v1/products 200 76ms req_id=40cc1
+2026-07-14T09:04:50.683Z [INFO] order-service: Handled POST /v1/checkout 304 139ms req_id=1a6ab
+2026-07-14T09:05:04.118Z [INFO] order-service: Handled GET /v1/users/{id} 200 38ms req_id=5c1e0
+2026-07-14T09:05:11.215Z [INFO] inventory-sync-worker: Handled GET /v1/products 200 76ms req_id=b3402
+2026-07-14T09:05:22.500Z [INFO] payment-service: Handled GET /v1/users/{id} 304 71ms req_id=99cc7
+2026-07-14T09:05:30.970Z [WARN] auth-service: Rate limit exceeded for client_id=partner-integration-77 (122 req/min > 100 req/min limit), throttling
+2026-07-14T09:05:32.283Z [INFO] api-gateway: Handled GET /health 304 112ms req_id=ecba2
+2026-07-14T09:05:38.165Z [INFO] api-gateway: Handled POST /v1/cart 200 167ms req_id=5b798
+2026-07-14T09:05:51.114Z [INFO] inventory-sync-worker: Handled GET /v1/users/{id} 200 147ms req_id=1ae3b
+2026-07-14T09:05:58.565Z [INFO] payment-service: Handled POST /v1/checkout 200 98ms req_id=ad895
+2026-07-14T09:06:06.920Z [INFO] catalog-service: Handled GET /v1/products 200 82ms req_id=75c3c
+2026-07-14T09:06:12.105Z [INFO] order-service: Handled GET /v1/products 304 67ms req_id=c3262
+2026-07-14T09:06:23.158Z [INFO] inventory-sync-worker: Handled GET /v1/catalog/search 200 162ms req_id=d847c
+2026-07-14T09:06:32.183Z [INFO] payment-service: Handled GET /v1/catalog/search 200 109ms req_id=1ec26
+2026-07-14T09:06:43.163Z [INFO] catalog-service: Handled GET /v1/catalog/search 304 67ms req_id=5cb76
+2026-07-14T09:06:50.204Z [INFO] catalog-service: Handled GET /v1/catalog/search 200 124ms req_id=515b6
+2026-07-14T09:07:03.675Z [INFO] order-service: Handled POST /v1/cart 200 61ms req_id=1e78d
+2026-07-14T09:07:12.285Z [INFO] catalog-service: Handled POST /v1/cart 200 21ms req_id=de62b
+2026-07-14T09:07:23.961Z [INFO] inventory-sync-worker: Handled GET /v1/orders/{id} 304 141ms req_id=6d303
+2026-07-14T09:07:29.039Z [INFO] api-gateway: Handled POST /v1/cart 200 152ms req_id=5c5f9
+2026-07-14T09:07:36.620Z [INFO] inventory-sync-worker: Handled GET /v1/orders/{id} 200 84ms req_id=88218
+2026-07-14T09:07:50.045Z [INFO] api-gateway: Handled GET /v1/orders/{id} 201 52ms req_id=599f7
+2026-07-14T09:08:02.962Z [INFO] api-gateway: Handled POST /v1/checkout 201 179ms req_id=d0969
+2026-07-14T09:08:11.638Z [INFO] order-service: Handled GET /v1/orders/{id} 200 174ms req_id=6cf1f
+2026-07-14T09:08:22.682Z [INFO] api-gateway: Handled GET /v1/users/{id} 200 133ms req_id=67974
+2026-07-14T09:08:34.130Z [INFO] order-service: Handled GET /v1/orders/{id} 304 79ms req_id=a657f
+2026-07-14T09:08:43.924Z [INFO] catalog-service: Handled GET /v1/users/{id} 200 177ms req_id=d7efb
+2026-07-14T09:08:51.853Z [INFO] inventory-sync-worker: Handled POST /v1/checkout 200 107ms req_id=a4af9
+2026-07-14T09:08:57.593Z [INFO] order-service: Handled POST /v1/cart 200 114ms req_id=e1917
+2026-07-14T09:09:08.523Z [INFO] catalog-service: Handled GET /v1/orders/{id} 200 176ms req_id=4f1f2
+2026-07-14T09:09:21.679Z [INFO] payment-service: Handled GET /v1/users/{id} 200 76ms req_id=9c5ea
+2026-07-14T09:09:32.230Z [INFO] api-gateway: Handled GET /v1/catalog/search 200 176ms req_id=67e1a
+2026-07-14T09:09:37.270Z [WARN] auth-service: Rate limit exceeded for client_id=mobile-app-ios (137 req/min > 100 req/min limit), throttling
+2026-07-14T09:09:41.625Z [INFO] payment-service: Handled GET /health 200 66ms req_id=920c8
+2026-07-14T09:09:48.735Z [INFO] catalog-service: Handled GET /v1/orders/{id} 304 151ms req_id=4a308
+2026-07-14T09:10:00.704Z [INFO] catalog-service: Handled GET /v1/orders/{id} 200 41ms req_id=c05d6
+2026-07-14T09:10:06.823Z [INFO] api-gateway: Handled GET /v1/catalog/search 200 60ms req_id=4570e
+2026-07-14T09:10:20.124Z [INFO] catalog-service: Handled GET /health 201 67ms req_id=f1969
+2026-07-14T09:10:33.572Z [INFO] payment-service: Handled GET /v1/catalog/search 200 174ms req_id=a0624
+2026-07-14T09:10:44.850Z [INFO] catalog-service: Handled POST /v1/checkout 304 133ms req_id=85a8e
+2026-07-14T09:10:58.265Z [INFO] catalog-service: Handled GET /v1/products 304 125ms req_id=8ba1c
+2026-07-14T09:11:07.244Z [INFO] order-service: Handled GET /v1/catalog/search 201 128ms req_id=b8dc9
+2026-07-14T09:11:17.278Z [INFO] catalog-service: Handled GET /health 304 77ms req_id=5471c
+2026-07-14T09:11:28.236Z [INFO] order-service: Handled POST /v1/checkout 200 39ms req_id=3f06d
+2026-07-14T09:11:40.417Z [INFO] payment-service: Handled GET /v1/users/{id} 200 20ms req_id=829ec
+2026-07-14T09:11:51.852Z [INFO] inventory-sync-worker: Handled GET /v1/orders/{id} 200 19ms req_id=4d5d1
+2026-07-14T09:12:03.901Z [INFO] catalog-service: Handled GET /v1/catalog/search 201 9ms req_id=f3bcc
+2026-07-14T09:12:15.399Z [INFO] catalog-service: Handled GET /health 200 80ms req_id=d94db
+2026-07-14T09:12:27.617Z [INFO] inventory-sync-worker: Handled GET /v1/users/{id} 304 143ms req_id=e52e2
+2026-07-14T09:12:36.029Z [INFO] catalog-service: Handled GET /v1/products 200 115ms req_id=94bd0
+2026-07-14T09:12:48.169Z [INFO] order-service: Handled GET /v1/users/{id} 304 107ms req_id=d1cdf
+2026-07-14T09:13:01.606Z [INFO] payment-service: Handled POST /v1/checkout 201 10ms req_id=7d488
+2026-07-14T09:13:07.186Z [INFO] api-gateway: Handled GET /v1/users/{id} 200 38ms req_id=8e9bd
+2026-07-14T09:13:13.334Z [INFO] order-service: Handled GET /v1/orders/{id} 200 58ms req_id=8cd12
+2026-07-14T09:13:24.083Z [INFO] catalog-service: Handled POST /v1/cart 200 68ms req_id=ee26b
+2026-07-14T09:13:31.245Z [WARN] auth-service: Rate limit exceeded for client_id=mobile-app-ios (130 req/min > 100 req/min limit), throttling
+2026-07-14T09:13:37.229Z [INFO] api-gateway: Handled GET /v1/users/{id} 201 17ms req_id=72010
+2026-07-14T09:13:44.859Z [INFO] api-gateway: Handled GET /v1/catalog/search 200 67ms req_id=4b734
+2026-07-14T09:13:50.685Z [INFO] inventory-sync-worker: Handled GET /v1/products 200 36ms req_id=91a54
+2026-07-14T09:13:57.377Z [INFO] inventory-sync-worker: Handled GET /v1/products 200 69ms req_id=dcbd6
+2026-07-14T09:14:58.735Z [INFO] inventory-sync-worker: Deployment finished: inventory-sync-worker v2.4.1 (commit 9c1a3fe) rolled out to 3/3 instances
+2026-07-14T09:15:02.117Z [WARN] inventory-sync-worker: Config key DB_CONNECTION_RELEASE_TIMEOUT_MS not found in environment for v2.4.1, falling back to driver default (release-on-GC, no explicit timeout)
+2026-07-14T09:15:06.796Z [INFO] inventory-sync-worker: Resuming scheduled inventory sync (interval=30s)
+2026-07-14T09:15:30.705Z [INFO] inventory-sync-worker: Handled POST /v1/cart 200 35ms req_id=90669
+2026-07-14T09:15:42.448Z [INFO] catalog-service: Handled POST /v1/cart 201 142ms req_id=96d35
+2026-07-14T09:15:51.256Z [INFO] inventory-sync-worker: Handled GET /health 200 86ms req_id=b2f6f
+2026-07-14T09:15:59.973Z [INFO] api-gateway: Handled GET /v1/products 304 151ms req_id=aeb7b
+2026-07-14T09:16:07.531Z [INFO] order-service: Handled POST /v1/checkout 200 48ms req_id=90dcb
+2026-07-14T09:16:12.167Z [WARN] inventory-sync-worker: Connection checked out from shared_db_pool but not released (batch_id=5521, held_for=30338ms)
+2026-07-14T09:16:23.160Z [WARN] auth-service: Rate limit exceeded for client_id=partner-integration-77 (119 req/min > 100 req/min limit), throttling
+2026-07-14T09:16:25.650Z [INFO] catalog-service: Handled POST /v1/cart 200 153ms req_id=88002
+2026-07-14T09:16:40.328Z [INFO] api-gateway: Handled GET /v1/orders/{id} 200 108ms req_id=6dbdb
+2026-07-14T09:16:58.710Z [INFO] api-gateway: Handled GET /v1/catalog/search 200 88ms req_id=81cb9
+2026-07-14T09:17:03.026Z [WARN] inventory-sync-worker: Connection checked out from shared_db_pool but not released (batch_id=5526, held_for=34292ms)
+2026-07-14T09:17:13.465Z [INFO] order-service: Handled GET /v1/users/{id} 200 144ms req_id=21cef
+2026-07-14T09:17:22.413Z [INFO] order-service: Handled POST /v1/cart 200 33ms req_id=de2fb
+2026-07-14T09:17:38.055Z [INFO] api-gateway: Handled GET /v1/users/{id} 201 122ms req_id=82349
+2026-07-14T09:17:49.452Z [INFO] inventory-sync-worker: Handled POST /v1/cart 201 131ms req_id=b884c
+2026-07-14T09:17:57.448Z [INFO] payment-service: Handled POST /v1/cart 201 37ms req_id=62264
+2026-07-14T09:18:12.245Z [INFO] api-gateway: Handled GET /health 304 159ms req_id=e509d
+2026-07-14T09:18:22.095Z [INFO] order-service: Handled POST /v1/checkout 200 145ms req_id=80dc1
+2026-07-14T09:18:24.929Z [WARN] inventory-sync-worker: Connection checked out from shared_db_pool but not released (batch_id=5531, held_for=38593ms)
+2026-07-14T09:18:33.157Z [INFO] api-gateway: Handled GET /v1/orders/{id} 200 169ms req_id=ed715
+2026-07-14T09:18:48.854Z [INFO] order-service: Handled POST /v1/checkout 304 73ms req_id=82c79
+2026-07-14T09:18:53.705Z [WARN] auth-service: Rate limit exceeded for client_id=mobile-app-android (167 req/min > 100 req/min limit), throttling
+2026-07-14T09:19:03.392Z [INFO] catalog-service: Handled GET /v1/products 200 145ms req_id=3d714
+2026-07-14T09:19:14.282Z [INFO] inventory-sync-worker: Handled POST /v1/checkout 304 38ms req_id=2a491
+2026-07-14T09:19:28.002Z [INFO] order-service: Handled GET /v1/catalog/search 201 72ms req_id=ea798
+2026-07-14T09:19:34.732Z [WARN] inventory-sync-worker: Connection checked out from shared_db_pool but not released (batch_id=5537, held_for=43064ms)
+2026-07-14T09:19:40.501Z [INFO] order-service: Handled GET /v1/catalog/search 201 152ms req_id=c15be
+2026-07-14T09:19:50.565Z [INFO] catalog-service: Handled POST /v1/checkout 200 92ms req_id=6d84c
+2026-07-14T09:20:06.244Z [INFO] catalog-service: Handled GET /v1/orders/{id} 200 52ms req_id=caf94
+2026-07-14T09:20:23.707Z [WARN] inventory-sync-worker: Connection checked out from shared_db_pool but not released (batch_id=5541, held_for=46906ms)
+2026-07-14T09:20:23.762Z [INFO] catalog-service: Handled GET /v1/products 200 15ms req_id=69de0
+2026-07-14T09:20:38.507Z [INFO] catalog-service: Handled GET /v1/orders/{id} 304 170ms req_id=3f5a5
+2026-07-14T09:20:46.895Z [INFO] payment-service: Handled POST /v1/checkout 201 88ms req_id=321b7
+2026-07-14T09:20:47.763Z [ERROR] api-gateway: Database rejected connection: too many connections (req_id=7cedd1)
+Traceback (most recent call last):
+  File "api_gateway/clients/orders_db.py", line 63, in get_connection
+    return shared_db_pool.acquire(timeout=5000)
+  File "shared_db/pool.py", line 57, in acquire
+    raise PoolExhaustedError(f"No available connections: {self.in_use}/{self.max_size} in use")
+shared_db.pool.PoolExhaustedError: No available connections: 50/50 in use
+2026-07-14T09:21:01.147Z [INFO] api-gateway: Handled POST /v1/checkout 200 7ms req_id=d15c1
+2026-07-14T09:21:15.638Z [INFO] payment-service: Handled GET /health 200 71ms req_id=6f15f
+2026-07-14T09:21:29.389Z [INFO] api-gateway: Handled GET /v1/catalog/search 200 176ms req_id=a1057
+2026-07-14T09:21:42.070Z [INFO] catalog-service: Handled GET /v1/catalog/search 201 13ms req_id=b67bd
+2026-07-14T09:21:48.104Z [WARN] inventory-sync-worker: Connection checked out from shared_db_pool but not released (batch_id=5550, held_for=50748ms)
+2026-07-14T09:21:53.100Z [INFO] order-service: Handled GET /v1/products 304 27ms req_id=8782c
+2026-07-14T09:22:11.047Z [INFO] api-gateway: Handled GET /v1/orders/{id} 200 80ms req_id=1fd31
+2026-07-14T09:22:12.719Z [ERROR] api-gateway: Database rejected connection: too many connections (req_id=6a1041)
+Traceback (most recent call last):
+  File "api_gateway/clients/orders_db.py", line 63, in get_connection
+    return shared_db_pool.acquire(timeout=5000)
+  File "shared_db/pool.py", line 57, in acquire
+    raise PoolExhaustedError(f"No available connections: {self.in_use}/{self.max_size} in use")
+shared_db.pool.PoolExhaustedError: No available connections: 50/50 in use
+2026-07-14T09:22:24.149Z [INFO] api-gateway: Handled POST /v1/cart 200 99ms req_id=86ab7
+2026-07-14T09:22:35.184Z [INFO] inventory-sync-worker: Handled GET /v1/orders/{id} 201 178ms req_id=e34c8
+2026-07-14T09:22:39.033Z [WARN] auth-service: Rate limit exceeded for client_id=mobile-app-android (147 req/min > 100 req/min limit), throttling
+2026-07-14T09:22:45.699Z [INFO] payment-service: Handled GET /health 201 101ms req_id=b70f5
+2026-07-14T09:22:56.653Z [INFO] catalog-service: Handled POST /v1/checkout 200 63ms req_id=8e77e
+2026-07-14T09:23:08.476Z [INFO] catalog-service: Handled POST /v1/cart 304 6ms req_id=e6666
+2026-07-14T09:23:20.601Z [INFO] inventory-sync-worker: Handled GET /v1/products 200 117ms req_id=70e0f
+2026-07-14T09:23:22.870Z [WARN] inventory-sync-worker: Connection checked out from shared_db_pool but not released (batch_id=5558, held_for=55008ms)
+2026-07-14T09:23:31.257Z [ERROR] api-gateway: Database rejected connection: too many connections (req_id=5e7ed8)
+Traceback (most recent call last):
+  File "api_gateway/clients/orders_db.py", line 63, in get_connection
+    return shared_db_pool.acquire(timeout=5000)
+  File "shared_db/pool.py", line 57, in acquire
+    raise PoolExhaustedError(f"No available connections: {self.in_use}/{self.max_size} in use")
+shared_db.pool.PoolExhaustedError: No available connections: 50/50 in use
+2026-07-14T09:23:32.309Z [INFO] catalog-service: Handled GET /v1/users/{id} 200 120ms req_id=f0cfd
+2026-07-14T09:23:43.390Z [INFO] catalog-service: Handled GET /v1/catalog/search 200 31ms req_id=55238
+2026-07-14T09:24:00.849Z [INFO] order-service: Handled POST /v1/checkout 200 79ms req_id=1e07d
+2026-07-14T09:24:18.796Z [INFO] catalog-service: Handled POST /v1/cart 200 148ms req_id=c7fa8
+2026-07-14T09:24:26.818Z [INFO] inventory-sync-worker: Handled GET /v1/users/{id} 200 77ms req_id=df00f
+2026-07-14T09:24:35.197Z [ERROR] payment-service: DB connection timeout after 5000ms while processing charge request req_id=c8a617
+Traceback (most recent call last):
+  File "payment_service/db/pool.py", line 88, in acquire
+    conn = self._pool.get(timeout=self.timeout)
+  File "payment_service/db/pool.py", line 41, in get
+    raise ConnectionPoolTimeout("Timed out waiting for connection from pool")
+payment_service.db.pool.ConnectionPoolTimeout: Timed out waiting for connection from pool (waited 5000ms, pool_size=50, in_use=50)
+2026-07-14T09:24:37.194Z [INFO] inventory-sync-worker: Handled GET /v1/catalog/search 200 60ms req_id=bb636
+2026-07-14T09:24:45.123Z [WARN] inventory-sync-worker: Connection checked out from shared_db_pool but not released (batch_id=5566, held_for=59724ms)
+2026-07-14T09:24:54.858Z [INFO] order-service: Handled GET /v1/users/{id} 304 172ms req_id=c6b68
+2026-07-14T09:24:55.348Z [ERROR] inventory-sync-worker: Failed to acquire DB connection for sync_inventory_batch(batch_id=5602): pool exhausted
+Traceback (most recent call last):
+  File "inventory_sync_worker/tasks.py", line 132, in sync_inventory_batch
+    conn = shared_db_pool.acquire(timeout=2000)
+  File "shared_db/pool.py", line 57, in acquire
+    raise PoolExhaustedError(f"No available connections: {self.in_use}/{self.max_size} in use")
+shared_db.pool.PoolExhaustedError: No available connections: 50/50 in use
+2026-07-14T09:25:04.807Z [INFO] api-gateway: Handled GET /v1/users/{id} 304 14ms req_id=67803
+2026-07-14T09:25:19.931Z [INFO] api-gateway: Handled POST /v1/checkout 200 37ms req_id=2f7cf
+2026-07-14T09:25:31.135Z [INFO] order-service: Handled GET /v1/users/{id} 200 48ms req_id=4bd14
+2026-07-14T09:25:38.719Z [WARN] auth-service: Rate limit exceeded for client_id=mobile-app-android (146 req/min > 100 req/min limit), throttling
+2026-07-14T09:25:45.548Z [ERROR] payment-service: DB connection timeout after 5000ms while processing charge request req_id=ce2d74
+Traceback (most recent call last):
+  File "payment_service/db/pool.py", line 88, in acquire
+    conn = self._pool.get(timeout=self.timeout)
+  File "payment_service/db/pool.py", line 41, in get
+    raise ConnectionPoolTimeout("Timed out waiting for connection from pool")
+payment_service.db.pool.ConnectionPoolTimeout: Timed out waiting for connection from pool (waited 5000ms, pool_size=50, in_use=50)
+2026-07-14T09:25:47.168Z [INFO] order-service: Handled POST /v1/checkout 201 73ms req_id=ed03d
+2026-07-14T09:25:59.117Z [INFO] catalog-service: Handled GET /v1/catalog/search 200 90ms req_id=e64c2
+2026-07-14T09:26:06.042Z [WARN] inventory-sync-worker: Connection checked out from shared_db_pool but not released (batch_id=5575, held_for=63901ms)
+2026-07-14T09:26:14.690Z [INFO] api-gateway: Handled GET /v1/products 200 177ms req_id=d1d04
+2026-07-14T09:26:28.270Z [INFO] inventory-sync-worker: Handled POST /v1/cart 200 105ms req_id=1bfa2
+2026-07-14T09:26:44.688Z [INFO] api-gateway: Handled GET /v1/orders/{id} 200 176ms req_id=d8293
+2026-07-14T09:26:56.691Z [INFO] inventory-sync-worker: Handled GET /v1/orders/{id} 304 99ms req_id=34269
+2026-07-14T09:27:00.569Z [ERROR] inventory-sync-worker: Failed to acquire DB connection for sync_inventory_batch(batch_id=5610): pool exhausted
+Traceback (most recent call last):
+  File "inventory_sync_worker/tasks.py", line 132, in sync_inventory_batch
+    conn = shared_db_pool.acquire(timeout=2000)
+  File "shared_db/pool.py", line 57, in acquire
+    raise PoolExhaustedError(f"No available connections: {self.in_use}/{self.max_size} in use")
+shared_db.pool.PoolExhaustedError: No available connections: 50/50 in use
+2026-07-14T09:27:07.937Z [INFO] catalog-service: Handled GET /health 201 147ms req_id=6c623
+2026-07-14T09:27:24.475Z [INFO] payment-service: Handled GET /v1/users/{id} 200 166ms req_id=eb522
+2026-07-14T09:27:25.677Z [WARN] inventory-sync-worker: Connection checked out from shared_db_pool but not released (batch_id=5580, held_for=67738ms)
+2026-07-14T09:27:35.221Z [ERROR] payment-service: DB connection timeout after 5000ms while processing charge request req_id=4108d4
+Traceback (most recent call last):
+  File "payment_service/db/pool.py", line 88, in acquire
+    conn = self._pool.get(timeout=self.timeout)
+  File "payment_service/db/pool.py", line 41, in get
+    raise ConnectionPoolTimeout("Timed out waiting for connection from pool")
+payment_service.db.pool.ConnectionPoolTimeout: Timed out waiting for connection from pool (waited 5000ms, pool_size=50, in_use=50)
+2026-07-14T09:27:36.311Z [INFO] catalog-service: Handled GET /health 200 15ms req_id=21f0b
+2026-07-14T09:27:51.397Z [INFO] api-gateway: Handled GET /health 200 141ms req_id=3b24e
+2026-07-14T09:28:06.601Z [INFO] order-service: Handled GET /v1/users/{id} 304 142ms req_id=83b5e
+2026-07-14T09:28:14.663Z [WARN] inventory-sync-worker: Connection checked out from shared_db_pool but not released (batch_id=5585, held_for=72018ms)
+2026-07-14T09:28:16.417Z [INFO] catalog-service: Handled GET /v1/users/{id} 200 129ms req_id=b6056
+2026-07-14T09:28:28.455Z [INFO] api-gateway: Handled GET /v1/users/{id} 200 59ms req_id=89eb8
+2026-07-14T09:28:39.923Z [INFO] order-service: Handled GET /health 304 98ms req_id=a3cc1
+2026-07-14T09:28:57.991Z [INFO] order-service: Handled GET /health 200 74ms req_id=49014
+2026-07-14T09:28:59.430Z [WARN] inventory-sync-worker: Connection checked out from shared_db_pool but not released (batch_id=5590, held_for=76569ms)
+2026-07-14T09:29:06.654Z [INFO] catalog-service: Handled GET /health 304 58ms req_id=bcb0b
+2026-07-14T09:29:12.741Z [ERROR] api-gateway: Database rejected connection: too many connections (req_id=56c8ad)
+Traceback (most recent call last):
+  File "api_gateway/clients/orders_db.py", line 63, in get_connection
+    return shared_db_pool.acquire(timeout=5000)
+  File "shared_db/pool.py", line 57, in acquire
+    raise PoolExhaustedError(f"No available connections: {self.in_use}/{self.max_size} in use")
+shared_db.pool.PoolExhaustedError: No available connections: 50/50 in use
+2026-07-14T09:29:23.805Z [INFO] api-gateway: Handled GET /health 200 66ms req_id=38a68
+2026-07-14T09:29:36.970Z [ERROR] inventory-sync-worker: Failed to acquire DB connection for sync_inventory_batch(batch_id=5614): pool exhausted
+Traceback (most recent call last):
+  File "inventory_sync_worker/tasks.py", line 132, in sync_inventory_batch
+    conn = shared_db_pool.acquire(timeout=2000)
+  File "shared_db/pool.py", line 57, in acquire
+    raise PoolExhaustedError(f"No available connections: {self.in_use}/{self.max_size} in use")
+shared_db.pool.PoolExhaustedError: No available connections: 50/50 in use
+2026-07-14T09:29:40.221Z [INFO] payment-service: Handled GET /health 201 57ms req_id=ae873
+2026-07-14T09:29:51.283Z [INFO] order-service: Handled GET /v1/catalog/search 200 156ms req_id=1923d
+2026-07-14T09:29:58.703Z [WARN] auth-service: Rate limit exceeded for client_id=mobile-app-android (119 req/min > 100 req/min limit), throttling
+2026-07-14T09:30:01.676Z [INFO] payment-service: Handled POST /v1/checkout 200 48ms req_id=348e2
+2026-07-14T09:30:09.331Z [INFO] payment-service: Handled GET /health 200 64ms req_id=af291
+2026-07-14T09:30:15.443Z [WARN] inventory-sync-worker: Connection checked out from shared_db_pool but not released (batch_id=5599, held_for=80008ms)
+2026-07-14T09:30:17.431Z [INFO] payment-service: Handled POST /v1/cart 200 36ms req_id=d64b3
+2026-07-14T09:30:33.796Z [INFO] api-gateway: Handled GET /v1/users/{id} 200 125ms req_id=8b2c2
+2026-07-14T09:30:39.852Z [ERROR] api-gateway: Database rejected connection: too many connections (req_id=29bc14)
+Traceback (most recent call last):
+  File "api_gateway/clients/orders_db.py", line 63, in get_connection
+    return shared_db_pool.acquire(timeout=5000)
+  File "shared_db/pool.py", line 57, in acquire
+    raise PoolExhaustedError(f"No available connections: {self.in_use}/{self.max_size} in use")
+shared_db.pool.PoolExhaustedError: No available connections: 50/50 in use
+2026-07-14T09:30:46.226Z [INFO] inventory-sync-worker: Handled POST /v1/checkout 200 119ms req_id=99659
+2026-07-14T09:31:03.469Z [INFO] api-gateway: Handled GET /v1/users/{id} 304 137ms req_id=65a1a
+2026-07-14T09:31:16.247Z [ERROR] inventory-sync-worker: Failed to acquire DB connection for sync_inventory_batch(batch_id=5621): pool exhausted
+Traceback (most recent call last):
+  File "inventory_sync_worker/tasks.py", line 132, in sync_inventory_batch
+    conn = shared_db_pool.acquire(timeout=2000)
+  File "shared_db/pool.py", line 57, in acquire
+    raise PoolExhaustedError(f"No available connections: {self.in_use}/{self.max_size} in use")
+shared_db.pool.PoolExhaustedError: No available connections: 50/50 in use
+2026-07-14T09:31:21.702Z [INFO] api-gateway: Handled GET /health 200 106ms req_id=858a4
+2026-07-14T09:31:30.329Z [INFO] catalog-service: Handled GET /v1/users/{id} 200 22ms req_id=2d18a
+2026-07-14T09:31:40.848Z [WARN] inventory-sync-worker: Connection checked out from shared_db_pool but not released (batch_id=5604, held_for=85012ms)
+2026-07-14T09:31:41.369Z [ERROR] api-gateway: Database rejected connection: too many connections (req_id=4a3c56)
+Traceback (most recent call last):
+  File "api_gateway/clients/orders_db.py", line 63, in get_connection
+    return shared_db_pool.acquire(timeout=5000)
+  File "shared_db/pool.py", line 57, in acquire
+    raise PoolExhaustedError(f"No available connections: {self.in_use}/{self.max_size} in use")
+shared_db.pool.PoolExhaustedError: No available connections: 50/50 in use
+2026-07-14T09:31:47.648Z [INFO] payment-service: Handled GET /health 200 74ms req_id=b83d4
+2026-07-14T09:32:04.543Z [INFO] inventory-sync-worker: Handled GET /v1/users/{id} 200 101ms req_id=b158a
+2026-07-14T09:32:16.812Z [INFO] catalog-service: Handled POST /v1/checkout 201 114ms req_id=31cdc
+2026-07-14T09:32:25.909Z [INFO] inventory-sync-worker: Handled GET /v1/users/{id} 200 114ms req_id=8c031
+2026-07-14T09:32:36.747Z [INFO] catalog-service: Handled POST /v1/cart 200 106ms req_id=82e84
+2026-07-14T09:32:42.725Z [ERROR] api-gateway: Database rejected connection: too many connections (req_id=139f3a)
+Traceback (most recent call last):
+  File "api_gateway/clients/orders_db.py", line 63, in get_connection
+    return shared_db_pool.acquire(timeout=5000)
+  File "shared_db/pool.py", line 57, in acquire
+    raise PoolExhaustedError(f"No available connections: {self.in_use}/{self.max_size} in use")
+shared_db.pool.PoolExhaustedError: No available connections: 50/50 in use
+2026-07-14T09:32:45.383Z [INFO] order-service: Handled GET /v1/orders/{id} 200 174ms req_id=59aa7
+2026-07-14T09:32:55.442Z [INFO] catalog-service: Handled GET /health 200 25ms req_id=3047e
+2026-07-14T09:32:57.435Z [WARN] auth-service: Rate limit exceeded for client_id=mobile-app-android (135 req/min > 100 req/min limit), throttling
+2026-07-14T09:33:04.600Z [INFO] order-service: Handled GET /v1/catalog/search 200 146ms req_id=27c4e
+2026-07-14T09:33:10.445Z [WARN] inventory-sync-worker: Connection checked out from shared_db_pool but not released (batch_id=5610, held_for=88456ms)
+2026-07-14T09:33:20.362Z [INFO] inventory-sync-worker: Handled POST /v1/cart 304 35ms req_id=8194c
+2026-07-14T09:33:38.614Z [INFO] catalog-service: Handled GET /v1/catalog/search 304 17ms req_id=620c1
+2026-07-14T09:33:48.568Z [ERROR] inventory-sync-worker: Failed to acquire DB connection for sync_inventory_batch(batch_id=5631): pool exhausted
+Traceback (most recent call last):
+  File "inventory_sync_worker/tasks.py", line 132, in sync_inventory_batch
+    conn = shared_db_pool.acquire(timeout=2000)
+  File "shared_db/pool.py", line 57, in acquire
+    raise PoolExhaustedError(f"No available connections: {self.in_use}/{self.max_size} in use")
+shared_db.pool.PoolExhaustedError: No available connections: 50/50 in use
+2026-07-14T09:33:50.158Z [INFO] order-service: Handled GET /health 201 133ms req_id=4ee00
+2026-07-14T09:34:06.046Z [ERROR] payment-service: DB connection timeout after 5000ms while processing charge request req_id=563944
+Traceback (most recent call last):
+  File "payment_service/db/pool.py", line 88, in acquire
+    conn = self._pool.get(timeout=self.timeout)
+  File "payment_service/db/pool.py", line 41, in get
+    raise ConnectionPoolTimeout("Timed out waiting for connection from pool")
+payment_service.db.pool.ConnectionPoolTimeout: Timed out waiting for connection from pool (waited 5000ms, pool_size=50, in_use=50)
+2026-07-14T09:34:08.569Z [INFO] catalog-service: Handled GET /v1/products 200 93ms req_id=f0d46
+2026-07-14T09:34:21.826Z [INFO] api-gateway: Handled GET /v1/catalog/search 200 150ms req_id=524f8
+2026-07-14T09:34:35.658Z [INFO] inventory-sync-worker: Handled GET /v1/catalog/search 201 161ms req_id=c5354
+2026-07-14T09:34:41.988Z [WARN] inventory-sync-worker: Connection checked out from shared_db_pool but not released (batch_id=5614, held_for=93034ms)
+2026-07-14T09:34:51.184Z [INFO] api-gateway: Handled POST /v1/checkout 304 72ms req_id=1fd37
+2026-07-14T09:34:59.966Z [ERROR] api-gateway: Database rejected connection: too many connections (req_id=c289f2)
+Traceback (most recent call last):
+  File "api_gateway/clients/orders_db.py", line 63, in get_connection
+    return shared_db_pool.acquire(timeout=5000)
+  File "shared_db/pool.py", line 57, in acquire
+    raise PoolExhaustedError(f"No available connections: {self.in_use}/{self.max_size} in use")
+shared_db.pool.PoolExhaustedError: No available connections: 50/50 in use
+2026-07-14T09:35:03.890Z [INFO] order-service: Handled POST /v1/cart 200 5ms req_id=46da9
+2026-07-14T09:35:13.758Z [INFO] inventory-sync-worker: Handled GET /v1/users/{id} 200 21ms req_id=3cbbe
+2026-07-14T09:35:31.385Z [INFO] api-gateway: Handled GET /health 304 139ms req_id=4f7cf
+2026-07-14T09:35:41.663Z [WARN] auth-service: Rate limit exceeded for client_id=partner-integration-77 (138 req/min > 100 req/min limit), throttling
+2026-07-14T09:35:43.827Z [WARN] inventory-sync-worker: Connection checked out from shared_db_pool but not released (batch_id=5622, held_for=97330ms)
+2026-07-14T09:35:45.738Z [INFO] catalog-service: Handled POST /v1/cart 200 98ms req_id=68317
+2026-07-14T09:35:57.893Z [ERROR] api-gateway: Database rejected connection: too many connections (req_id=2a432f)
+Traceback (most recent call last):
+  File "api_gateway/clients/orders_db.py", line 63, in get_connection
+    return shared_db_pool.acquire(timeout=5000)
+  File "shared_db/pool.py", line 57, in acquire
+    raise PoolExhaustedError(f"No available connections: {self.in_use}/{self.max_size} in use")
+shared_db.pool.PoolExhaustedError: No available connections: 50/50 in use
+2026-07-14T09:35:58.161Z [INFO] inventory-sync-worker: Handled POST /v1/checkout 200 17ms req_id=403e1
+2026-07-14T09:36:15.677Z [INFO] api-gateway: Handled GET /v1/users/{id} 200 73ms req_id=89d9d
+2026-07-14T09:36:18.661Z [ERROR] inventory-sync-worker: Failed to acquire DB connection for sync_inventory_batch(batch_id=5638): pool exhausted
+Traceback (most recent call last):
+  File "inventory_sync_worker/tasks.py", line 132, in sync_inventory_batch
+    conn = shared_db_pool.acquire(timeout=2000)
+  File "shared_db/pool.py", line 57, in acquire
+    raise PoolExhaustedError(f"No available connections: {self.in_use}/{self.max_size} in use")
+shared_db.pool.PoolExhaustedError: No available connections: 50/50 in use
+2026-07-14T09:36:29.220Z [INFO] catalog-service: Handled POST /v1/checkout 200 110ms req_id=5e584
+2026-07-14T09:36:45.694Z [INFO] api-gateway: Handled POST /v1/cart 200 32ms req_id=60ecd
+2026-07-14T09:36:47.490Z [ERROR] api-gateway: Database rejected connection: too many connections (req_id=882a65)
+Traceback (most recent call last):
+  File "api_gateway/clients/orders_db.py", line 63, in get_connection
+    return shared_db_pool.acquire(timeout=5000)
+  File "shared_db/pool.py", line 57, in acquire
+    raise PoolExhaustedError(f"No available connections: {self.in_use}/{self.max_size} in use")
+shared_db.pool.PoolExhaustedError: No available connections: 50/50 in use
+2026-07-14T09:37:03.046Z [INFO] inventory-sync-worker: Handled GET /v1/orders/{id} 201 174ms req_id=675e9
+2026-07-14T09:37:14.308Z [INFO] catalog-service: Handled POST /v1/checkout 200 5ms req_id=4cbf1
+2026-07-14T09:37:17.476Z [WARN] inventory-sync-worker: Connection checked out from shared_db_pool but not released (batch_id=5629, held_for=101395ms)
+2026-07-14T09:37:25.122Z [INFO] payment-service: Handled GET /v1/catalog/search 200 78ms req_id=6c69d
+2026-07-14T09:37:33.389Z [INFO] catalog-service: Handled GET /v1/users/{id} 200 48ms req_id=397c5
+2026-07-14T09:37:49.362Z [INFO] payment-service: Handled POST /v1/checkout 201 175ms req_id=e6cd2
+2026-07-14T09:37:58.019Z [INFO] catalog-service: Handled GET /v1/catalog/search 304 14ms req_id=88161
+2026-07-14T09:38:05.988Z [ERROR] api-gateway: Database rejected connection: too many connections (req_id=3f3275)
+Traceback (most recent call last):
+  File "api_gateway/clients/orders_db.py", line 63, in get_connection
+    return shared_db_pool.acquire(timeout=5000)
+  File "shared_db/pool.py", line 57, in acquire
+    raise PoolExhaustedError(f"No available connections: {self.in_use}/{self.max_size} in use")
+shared_db.pool.PoolExhaustedError: No available connections: 50/50 in use
+2026-07-14T09:38:13.587Z [INFO] api-gateway: Handled GET /v1/catalog/search 200 151ms req_id=864f9
+2026-07-14T09:38:27.989Z [INFO] catalog-service: Handled POST /v1/cart 200 107ms req_id=1dc0d
+2026-07-14T09:38:30.073Z [WARN] auth-service: Rate limit exceeded for client_id=mobile-app-android (128 req/min > 100 req/min limit), throttling
+2026-07-14T09:38:40.706Z [INFO] payment-service: Handled GET /v1/catalog/search 201 121ms req_id=ed69a
+2026-07-14T09:38:45.811Z [ERROR] inventory-sync-worker: Failed to acquire DB connection for sync_inventory_batch(batch_id=5649): pool exhausted
+Traceback (most recent call last):
+  File "inventory_sync_worker/tasks.py", line 132, in sync_inventory_batch
+    conn = shared_db_pool.acquire(timeout=2000)
+  File "shared_db/pool.py", line 57, in acquire
+    raise PoolExhaustedError(f"No available connections: {self.in_use}/{self.max_size} in use")
+shared_db.pool.PoolExhaustedError: No available connections: 50/50 in use
+2026-07-14T09:38:48.274Z [WARN] inventory-sync-worker: Connection checked out from shared_db_pool but not released (batch_id=5635, held_for=105706ms)
+2026-07-14T09:38:53.603Z [INFO] api-gateway: Handled GET /v1/orders/{id} 200 66ms req_id=87f27
+2026-07-14T09:38:58.489Z [ERROR] api-gateway: Database rejected connection: too many connections (req_id=ec99e0)
+Traceback (most recent call last):
+  File "api_gateway/clients/orders_db.py", line 63, in get_connection
+    return shared_db_pool.acquire(timeout=5000)
+  File "shared_db/pool.py", line 57, in acquire
+    raise PoolExhaustedError(f"No available connections: {self.in_use}/{self.max_size} in use")
+shared_db.pool.PoolExhaustedError: No available connections: 50/50 in use
+2026-07-14T09:39:07.347Z [INFO] inventory-sync-worker: Handled GET /health 200 83ms req_id=d7571
+2026-07-14T09:39:18.648Z [INFO] order-service: Handled GET /v1/catalog/search 200 23ms req_id=9b190
+2026-07-14T09:39:27.744Z [INFO] inventory-sync-worker: Handled POST /v1/checkout 200 93ms req_id=724ba
+2026-07-14T09:39:45.202Z [INFO] payment-service: Handled GET /v1/products 200 41ms req_id=59f12
+2026-07-14T09:39:48.957Z [WARN] inventory-sync-worker: Connection checked out from shared_db_pool but not released (batch_id=5640, held_for=110150ms)
+2026-07-14T09:39:55.503Z [ERROR] payment-service: DB connection timeout after 5000ms while processing charge request req_id=7694c3
+Traceback (most recent call last):
+  File "payment_service/db/pool.py", line 88, in acquire
+    conn = self._pool.get(timeout=self.timeout)
+  File "payment_service/db/pool.py", line 41, in get
+    raise ConnectionPoolTimeout("Timed out waiting for connection from pool")
+payment_service.db.pool.ConnectionPoolTimeout: Timed out waiting for connection from pool (waited 5000ms, pool_size=50, in_use=50)
+2026-07-14T09:39:55.974Z [INFO] inventory-sync-worker: Handled GET /v1/products 304 23ms req_id=45c37
+2026-07-14T09:40:13.697Z [INFO] catalog-service: Handled GET /v1/orders/{id} 201 152ms req_id=8b557
+2026-07-14T09:40:26.301Z [ERROR] inventory-sync-worker: Failed to acquire DB connection for sync_inventory_batch(batch_id=5653): pool exhausted
+Traceback (most recent call last):
+  File "inventory_sync_worker/tasks.py", line 132, in sync_inventory_batch
+    conn = shared_db_pool.acquire(timeout=2000)
+  File "shared_db/pool.py", line 57, in acquire
+    raise PoolExhaustedError(f"No available connections: {self.in_use}/{self.max_size} in use")
+shared_db.pool.PoolExhaustedError: No available connections: 50/50 in use
+2026-07-14T09:40:30.450Z [INFO] inventory-sync-worker: Handled POST /v1/cart 304 84ms req_id=3f0f2
+2026-07-14T09:40:39.281Z [INFO] catalog-service: Handled GET /v1/orders/{id} 304 81ms req_id=e4464
+2026-07-14T09:40:49.152Z [ERROR] payment-service: DB connection timeout after 5000ms while processing charge request req_id=36d794
+Traceback (most recent call last):
+  File "payment_service/db/pool.py", line 88, in acquire
+    conn = self._pool.get(timeout=self.timeout)
+  File "payment_service/db/pool.py", line 41, in get
+    raise ConnectionPoolTimeout("Timed out waiting for connection from pool")
+payment_service.db.pool.ConnectionPoolTimeout: Timed out waiting for connection from pool (waited 5000ms, pool_size=50, in_use=50)
+2026-07-14T09:40:50.461Z [WARN] inventory-sync-worker: Connection checked out from shared_db_pool but not released (batch_id=5643, held_for=114402ms)
+2026-07-14T09:40:56.472Z [INFO] api-gateway: Handled POST /v1/cart 201 22ms req_id=67e0e
+2026-07-14T09:41:07.609Z [WARN] auth-service: Rate limit exceeded for client_id=mobile-app-ios (149 req/min > 100 req/min limit), throttling
+2026-07-14T09:41:11.660Z [INFO] api-gateway: Handled GET /health 200 77ms req_id=2c0ea
+2026-07-14T09:41:20.594Z [INFO] inventory-sync-worker: Handled POST /v1/checkout 201 102ms req_id=8ede4
+2026-07-14T09:41:36.329Z [INFO] api-gateway: Handled GET /v1/orders/{id} 201 170ms req_id=489a7
+2026-07-14T09:41:53.105Z [INFO] catalog-service: Handled POST /v1/checkout 200 19ms req_id=8bbf7
+2026-07-14T09:42:06.253Z [INFO] api-gateway: Handled POST /v1/checkout 304 48ms req_id=226f3
+2026-07-14T09:42:21.372Z [INFO] catalog-service: Handled POST /v1/checkout 201 160ms req_id=410d9
+2026-07-14T09:42:23.583Z [WARN] inventory-sync-worker: Connection checked out from shared_db_pool but not released (batch_id=5647, held_for=118175ms)
+2026-07-14T09:42:30.254Z [ERROR] api-gateway: Database rejected connection: too many connections (req_id=25ce6a)
+Traceback (most recent call last):
+  File "api_gateway/clients/orders_db.py", line 63, in get_connection
+    return shared_db_pool.acquire(timeout=5000)
+  File "shared_db/pool.py", line 57, in acquire
+    raise PoolExhaustedError(f"No available connections: {self.in_use}/{self.max_size} in use")
+shared_db.pool.PoolExhaustedError: No available connections: 50/50 in use
+2026-07-14T09:42:34.612Z [INFO] order-service: Handled GET /v1/orders/{id} 200 90ms req_id=c6363
+2026-07-14T09:42:42.694Z [INFO] order-service: Handled GET /health 200 28ms req_id=a740a
+2026-07-14T09:42:47.708Z [ERROR] inventory-sync-worker: Failed to acquire DB connection for sync_inventory_batch(batch_id=5660): pool exhausted
+Traceback (most recent call last):
+  File "inventory_sync_worker/tasks.py", line 132, in sync_inventory_batch
+    conn = shared_db_pool.acquire(timeout=2000)
+  File "shared_db/pool.py", line 57, in acquire
+    raise PoolExhaustedError(f"No available connections: {self.in_use}/{self.max_size} in use")
+shared_db.pool.PoolExhaustedError: No available connections: 50/50 in use
+2026-07-14T09:42:56.894Z [INFO] order-service: Handled POST /v1/cart 304 172ms req_id=b2b49
+2026-07-14T09:43:06.938Z [INFO] order-service: Handled GET /health 201 173ms req_id=3c9ea
+2026-07-14T09:43:19.132Z [INFO] order-service: Handled GET /v1/users/{id} 304 173ms req_id=7cc15
+2026-07-14T09:43:27.610Z [ERROR] api-gateway: Database rejected connection: too many connections (req_id=ab37a2)
+Traceback (most recent call last):
+  File "api_gateway/clients/orders_db.py", line 63, in get_connection
+    return shared_db_pool.acquire(timeout=5000)
+  File "shared_db/pool.py", line 57, in acquire
+    raise PoolExhaustedError(f"No available connections: {self.in_use}/{self.max_size} in use")
+shared_db.pool.PoolExhaustedError: No available connections: 50/50 in use
+2026-07-14T09:43:36.810Z [INFO] api-gateway: Handled POST /v1/cart 201 100ms req_id=bd25f
+2026-07-14T09:43:49.095Z [INFO] payment-service: Handled GET /v1/users/{id} 304 179ms req_id=9f2bb
+2026-07-14T09:43:50.344Z [WARN] inventory-sync-worker: Connection checked out from shared_db_pool but not released (batch_id=5654, held_for=122288ms)
+2026-07-14T09:44:07.316Z [INFO] catalog-service: Handled POST /v1/checkout 200 8ms req_id=753d3
+2026-07-14T09:44:17.140Z [INFO] payment-service: Handled POST /v1/cart 200 53ms req_id=5268b
+2026-07-14T09:44:27.552Z [INFO] api-gateway: Handled POST /v1/cart 200 133ms req_id=ddc20
+2026-07-14T09:44:43.611Z [INFO] api-gateway: Handled GET /v1/users/{id} 200 162ms req_id=39f66
+2026-07-14T09:44:56.679Z [ERROR] inventory-sync-worker: Failed to acquire DB connection for sync_inventory_batch(batch_id=5667): pool exhausted
+Traceback (most recent call last):
+  File "inventory_sync_worker/tasks.py", line 132, in sync_inventory_batch
+    conn = shared_db_pool.acquire(timeout=2000)
+  File "shared_db/pool.py", line 57, in acquire
+    raise PoolExhaustedError(f"No available connections: {self.in_use}/{self.max_size} in use")
+shared_db.pool.PoolExhaustedError: No available connections: 50/50 in use
+2026-07-14T09:44:57.924Z [INFO] payment-service: Handled GET /v1/products 200 163ms req_id=e7877
+2026-07-14T09:45:06.332Z [WARN] inventory-sync-worker: Connection checked out from shared_db_pool but not released (batch_id=5657, held_for=126971ms)
+2026-07-14T09:45:07.535Z [ERROR] payment-service: DB connection timeout after 5000ms while processing charge request req_id=d693da
+Traceback (most recent call last):
+  File "payment_service/db/pool.py", line 88, in acquire
+    conn = self._pool.get(timeout=self.timeout)
+  File "payment_service/db/pool.py", line 41, in get
+    raise ConnectionPoolTimeout("Timed out waiting for connection from pool")
+payment_service.db.pool.ConnectionPoolTimeout: Timed out waiting for connection from pool (waited 5000ms, pool_size=50, in_use=50)
+2026-07-14T09:45:07.736Z [INFO] catalog-service: Handled GET /health 200 97ms req_id=c5901
+2026-07-14T09:45:18.546Z [INFO] catalog-service: Handled POST /v1/checkout 200 118ms req_id=54519
+2026-07-14T09:45:29.694Z [INFO] order-service: Handled GET /v1/catalog/search 200 53ms req_id=7694d
+2026-07-14T09:45:46.540Z [INFO] catalog-service: Handled GET /v1/orders/{id} 200 101ms req_id=99287
+2026-07-14T09:46:00.893Z [INFO] payment-service: Handled GET /v1/catalog/search 200 158ms req_id=3bd81
+2026-07-14T09:46:12.956Z [INFO] api-gateway: Handled GET /v1/users/{id} 200 99ms req_id=a6606
+2026-07-14T09:46:21.453Z [ERROR] api-gateway: Database rejected connection: too many connections (req_id=f893be)
+Traceback (most recent call last):
+  File "api_gateway/clients/orders_db.py", line 63, in get_connection
+    return shared_db_pool.acquire(timeout=5000)
+  File "shared_db/pool.py", line 57, in acquire
+    raise PoolExhaustedError(f"No available connections: {self.in_use}/{self.max_size} in use")
+shared_db.pool.PoolExhaustedError: No available connections: 50/50 in use
+2026-07-14T09:46:21.781Z [INFO] inventory-sync-worker: Handled GET /v1/catalog/search 200 76ms req_id=2de2d
+2026-07-14T09:46:22.363Z [WARN] inventory-sync-worker: Connection checked out from shared_db_pool but not released (batch_id=5661, held_for=130517ms)
+2026-07-14T09:46:31.447Z [INFO] order-service: Handled GET /v1/orders/{id} 201 41ms req_id=ed297
+2026-07-14T09:46:40.061Z [FATAL] payment-service: Unable to process any requests: shared_db_pool has been exhausted for over 5 minutes, entering degraded mode (rejecting new checkouts)
+2026-07-14T09:46:40.424Z [INFO] payment-service: Handled GET /v1/catalog/search 200 93ms req_id=1f3dd
+2026-07-14T09:46:48.083Z [INFO] catalog-service: Handled POST /v1/checkout 200 64ms req_id=7b45c
+2026-07-14T09:47:01.731Z [INFO] payment-service: Handled GET /health 200 29ms req_id=ef3e4
+2026-07-14T09:47:19.293Z [INFO] order-service: Handled GET /v1/catalog/search 200 39ms req_id=22383
+2026-07-14T09:47:30.582Z [ERROR] api-gateway: Database rejected connection: too many connections (req_id=5e2d66)
+Traceback (most recent call last):
+  File "api_gateway/clients/orders_db.py", line 63, in get_connection
+    return shared_db_pool.acquire(timeout=5000)
+  File "shared_db/pool.py", line 57, in acquire
+    raise PoolExhaustedError(f"No available connections: {self.in_use}/{self.max_size} in use")
+shared_db.pool.PoolExhaustedError: No available connections: 50/50 in use
+2026-07-14T09:47:34.630Z [INFO] payment-service: Handled GET /v1/catalog/search 304 124ms req_id=8b418
+2026-07-14T09:47:42.153Z [INFO] api-gateway: Handled GET /health 200 59ms req_id=ee2a2
+2026-07-14T09:47:58.295Z [INFO] inventory-sync-worker: Handled POST /v1/checkout 200 32ms req_id=df1d3
