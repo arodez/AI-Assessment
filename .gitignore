@@ -2,3 +2,5 @@
 *.workspace
 tier-1-warmup/__pycache__/solution.cpython-314.pyc
 tier-1-warmup/__pycache__/test_solution.cpython-314.pyc
+tier-2-legacy-rescue/solution/__pycache__/test_report_generator.cpython-314.pyc
+tier-2-legacy-rescue/solution/__pycache__/report_generator_fixed.cpython-314.pyc
