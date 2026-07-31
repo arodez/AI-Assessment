@@ -1,0 +1,3 @@
+luis.mendoza@example.com
+diego.fuentes@example.com
+jorge.salinas@example.com

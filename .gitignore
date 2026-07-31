@@ -1,2 +1,4 @@
 *.DS_Store
 *.workspace
+tier-1-warmup/__pycache__/solution.cpython-314.pyc
+tier-1-warmup/__pycache__/test_solution.cpython-314.pyc
