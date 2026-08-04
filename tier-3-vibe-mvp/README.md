@@ -40,6 +40,8 @@ Test and document at least these 3 flows: (a) successful sign-up, (b) rejection 
 
 - The MVP code (repo, zip, or Replit link) running, with startup instructions in its own `README.md`.
 - `BRIEF.md` · `PROMPT_LOG.md` · `SECURITY_CHECK.md` · `VERIFICATION_NOTE.md` (templates in [`../templates/`](../templates/)).
+- **Organizer dashboard** available at `/dashboard`, showing attendees per event and offering CSV export.
+
 
 ## Rubric (100 pts)
 
