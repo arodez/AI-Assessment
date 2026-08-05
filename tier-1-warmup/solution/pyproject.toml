@@ -1,0 +1,16 @@
+[tool.poetry]
+name = "engineer-status-cli"
+version = "0.1.0"
+description = "CLI that summarizes engineer course_status from a CSV and writes a pending-emails report."
+authors = ["Javier Cervantes"]
+package-mode = false
+
+[tool.poetry.dependencies]
+python = "^3.14"
+
+[tool.poetry.group.dev.dependencies]
+pytest = "^8.0"
+
+[build-system]
+requires = ["poetry-core>=1.8.0"]
+build-backend = "poetry_core.masonry.api"
