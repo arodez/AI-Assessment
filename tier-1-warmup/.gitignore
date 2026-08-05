@@ -1,2 +1,13 @@
 .claude/logs/.pending
 session-log.md
+
+# Python / Poetry
+__pycache__/
+*.pyc
+.venv/
+dist/
+*.egg-info/
+.pytest_cache/
+
+# Generated CLI output (not a deliverable)
+pending-*.txt
