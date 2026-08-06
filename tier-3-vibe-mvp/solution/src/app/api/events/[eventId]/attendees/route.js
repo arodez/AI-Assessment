@@ -1,7 +1,7 @@
 import { getDb } from "@/lib/db";
 
 export async function GET(request, { params }) {
-  const { eventId } = params;
+  const { eventId } = await params;
   const db = await getDb();
 
   // Verify event exists
