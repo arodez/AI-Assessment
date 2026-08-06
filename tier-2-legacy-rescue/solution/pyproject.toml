@@ -1,0 +1,80 @@
+[tool.poetry]
+name = "report-generator"
+version = "0.1.0"
+description = "Weekly training-compliance report generator (legacy rescue) — fixed implementation and test suite."
+authors = ["Javier Aguila"]
+package-mode = false
+
+[tool.poetry.dependencies]
+python = ">=3.10,<4.0"
+
+[tool.poetry.group.dev.dependencies]
+pytest = "^8.3"
+pytest-cov = "^5.0"
+mypy = "^1.11"
+ruff = "^0.6"
+pre-commit = "^3.8"
+
+[build-system]
+requires = ["poetry-core>=1.0.0"]
+build-backend = "poetry.core.masonry.api"
+
+# --- pytest -----------------------------------------------------------------
+# `pythonpath` puts solution/ on sys.path so tests can `import report_generator_fixed`
+# without packaging it. `--cov-fail-under=100` is the enforcement mechanism for the
+# 100% coverage goal; it fails the run (and therefore the pre-commit hook) short of that.
+[tool.pytest.ini_options]
+minversion = "8.0"
+testpaths = ["tests"]
+pythonpath = ["."]
+addopts = [
+    "--cov=report_generator_fixed",
+    "--cov-report=term-missing",
+    "--cov-report=html",
+    "--cov-fail-under=100",
+    "--strict-markers",
+]
+
+[tool.coverage.run]
+branch = true
+source = ["report_generator_fixed"]
+
+[tool.coverage.report]
+show_missing = true
+exclude_lines = [
+    "pragma: no cover",
+    "if __name__ == .__main__.:",
+]
+
+# --- mypy ---------------------------------------------------------------
+# Covers the whole solution: report_generator_fixed.py and its tests.
+[tool.mypy]
+files = ["."]
+python_version = "3.10"
+strict = true
+warn_unused_configs = true
+
+# --- ruff -----------------------------------------------------------------
+[tool.ruff]
+line-length = 100
+target-version = "py310"
+include = ["*.py", "tests/**/*.py"]
+
+[tool.ruff.lint]
+select = ["E", "F", "I", "UP", "B", "SIM", "D"]
+ignore = [
+    "D203", # conflicts with D211 (no-blank-line-before-class)
+    "D213", # conflicts with D212 (multi-line-summary-first-line)
+]
+
+[tool.ruff.lint.pydocstyle]
+convention = "google"
+
+[tool.ruff.lint.per-file-ignores]
+# Test functions are documented by their descriptive names; a docstring on
+# every single `test_*` function would be redundant. Module/class docstrings
+# are still required.
+"tests/**/test_*.py" = ["D101", "D102", "D103"]
+
+[tool.ruff.format]
+quote-style = "double"
