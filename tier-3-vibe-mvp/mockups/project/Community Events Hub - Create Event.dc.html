@@ -1,0 +1,272 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+
+<helmet>
+<script src="./image-slot.js"></script>
+<style>
+@font-face{font-family:'Space Mono';src:url('./assets/fonts/SpaceMono-Regular.ttf') format('truetype');font-weight:400;font-style:normal}
+@font-face{font-family:'Space Mono';src:url('./assets/fonts/SpaceMono-Bold.ttf') format('truetype');font-weight:700;font-style:normal}
+@font-face{font-family:'Nunito Sans';src:url('./assets/fonts/NunitoSans-Variable.ttf') format('truetype-variations');font-weight:200 1000;font-style:normal}
+body{margin:0;background:#FCFBF5;font-family:'Nunito Sans',sans-serif;text-wrap:pretty}
+a{color:#1366B1}
+a:hover{color:#0f4f88}
+*{box-sizing:border-box}
+input::placeholder, textarea::placeholder{color:#a2a19c}
+</style>
+</helmet>
+<div style="min-height:100vh;background:#FCFBF5;color:#211E1E">
+  <header style="display:flex;align-items:center;justify-content:space-between;gap:16px;flex-wrap:wrap;padding:20px clamp(20px,4vw,56px);border-bottom:1px solid #E4E3DD">
+    <div style="display:flex;align-items:center;gap:12px">
+      <div style="width:34px;height:34px;background:#E93D44;border-radius:6px;display:flex;align-items:center;justify-content:center;flex:none">
+        <span style="font-family:'Space Mono',monospace;font-weight:700;color:#FCFBF5;font-size:18px">E</span>
+      </div>
+      <div style="font-family:'Space Mono',monospace;font-weight:700;font-size:18px;letter-spacing:0.02em">EVENTS HUB</div>
+    </div>
+    <div style="display:flex;align-items:center;gap:14px">
+      <span style="font-size:15px;color:#4a4846">Hey, Jordan</span>
+      <div style="width:36px;height:36px;border-radius:50%;background:#26BDFB;display:flex;align-items:center;justify-content:center;flex:none">
+        <span style="font-family:'Space Mono',monospace;font-weight:700;color:#fff;font-size:13px">JR</span>
+      </div>
+    </div>
+  </header>
+
+  <main style="max-width:1160px;margin:0 auto;padding:clamp(28px,4vw,52px) clamp(20px,4vw,56px) 80px">
+    <a href="#" style="display:inline-block;font-size:13.5px;color:#797873;text-decoration:none;margin-bottom:18px">&larr; All events</a>
+    <h1 style="font-family:'Space Mono',monospace;font-weight:700;font-size:clamp(26px,3.2vw,38px);letter-spacing:0.01em;margin:0 0 8px;text-transform:uppercase">Create Event</h1>
+    <p style="font-size:15.5px;line-height:1.5;color:#5c5a57;margin:0 0 32px;max-width:620px">Fill in the details below, then publish so it shows up on the events feed.</p>
+
+    <div style="display:flex;gap:44px;flex-wrap:wrap;align-items:flex-start">
+      <div style="flex:1 1 380px;min-width:320px;display:flex;flex-direction:column;gap:26px">
+
+        <div>
+          <label style="font-family:'Space Mono',monospace;font-weight:700;font-size:11px;letter-spacing:0.06em;text-transform:uppercase;color:#797873;display:block;margin-bottom:8px">Cover Photo</label>
+          <div style="width:100%;aspect-ratio:16/10;border-radius:10px;overflow:hidden">
+            <image-slot id="create-event-cover" shape="rect" placeholder="Drop a cover photo"></image-slot>
+          </div>
+        </div>
+
+        <div>
+          <label style="font-family:'Space Mono',monospace;font-weight:700;font-size:11px;letter-spacing:0.06em;text-transform:uppercase;color:#797873;display:block;margin-bottom:8px">Event Type</label>
+          <div style="display:flex;gap:8px;flex-wrap:wrap">
+            <sc-for list="{{ categories }}" as="cat" hint-placeholder-count="4">
+              <button onClick="{{ cat.onSelect }}" style="cursor:pointer;font-family:'Nunito Sans',sans-serif;font-weight:700;font-size:13px;padding:8px 14px;border-radius:7px;{{ cat.buttonStyle }}">{{ cat.label }}</button>
+            </sc-for>
+          </div>
+        </div>
+
+        <div>
+          <label style="font-family:'Space Mono',monospace;font-weight:700;font-size:11px;letter-spacing:0.06em;text-transform:uppercase;color:#797873;display:block;margin-bottom:8px">Title</label>
+          <input type="text" value="{{ title }}" onChange="{{ onTitleChange }}" placeholder="e.g. Figma Variables Workshop" style="width:100%;padding:11px 13px;border:1px solid #E4E3DD;border-radius:7px;font-family:'Nunito Sans',sans-serif;font-size:15px;color:#211E1E;background:#fff;outline:none" style-focus="border-color:#E93D44" />
+        </div>
+
+        <div>
+          <label style="font-family:'Space Mono',monospace;font-weight:700;font-size:11px;letter-spacing:0.06em;text-transform:uppercase;color:#797873;display:block;margin-bottom:8px">Description</label>
+          <textarea rows="4" value="{{ description }}" onChange="{{ onDescriptionChange }}" placeholder="What will people learn or do? Anything they should bring or prep?" style="width:100%;padding:11px 13px;border:1px solid #E4E3DD;border-radius:7px;font-family:'Nunito Sans',sans-serif;font-size:14.5px;line-height:1.5;color:#211E1E;background:#fff;outline:none;resize:vertical" style-focus="border-color:#E93D44"></textarea>
+        </div>
+
+        <div>
+          <label style="font-family:'Space Mono',monospace;font-weight:700;font-size:11px;letter-spacing:0.06em;text-transform:uppercase;color:#797873;display:block;margin-bottom:8px">Date &amp; Time</label>
+          <div style="display:flex;gap:10px;flex-wrap:wrap">
+            <input type="date" value="{{ date }}" onChange="{{ onDateChange }}" style="flex:1 1 150px;padding:10px 12px;border:1px solid #E4E3DD;border-radius:7px;font-family:'Nunito Sans',sans-serif;font-size:14px;color:#211E1E;background:#fff;outline:none" style-focus="border-color:#E93D44" />
+            <input type="time" value="{{ startTime }}" onChange="{{ onStartTimeChange }}" style="flex:1 1 110px;padding:10px 12px;border:1px solid #E4E3DD;border-radius:7px;font-family:'Nunito Sans',sans-serif;font-size:14px;color:#211E1E;background:#fff;outline:none" style-focus="border-color:#E93D44" />
+            <input type="time" value="{{ endTime }}" onChange="{{ onEndTimeChange }}" style="flex:1 1 110px;padding:10px 12px;border:1px solid #E4E3DD;border-radius:7px;font-family:'Nunito Sans',sans-serif;font-size:14px;color:#211E1E;background:#fff;outline:none" style-focus="border-color:#E93D44" />
+          </div>
+        </div>
+
+        <div>
+          <label style="font-family:'Space Mono',monospace;font-weight:700;font-size:11px;letter-spacing:0.06em;text-transform:uppercase;color:#797873;display:block;margin-bottom:8px">Location</label>
+          <div style="display:flex;gap:8px;margin-bottom:10px;flex-wrap:wrap">
+            <button onClick="{{ onSetInPerson }}" style="cursor:pointer;font-family:'Nunito Sans',sans-serif;font-weight:700;font-size:13px;padding:8px 14px;border-radius:7px;{{ inPersonButtonStyle }}">In-person</button>
+            <button onClick="{{ onSetHybrid }}" style="cursor:pointer;font-family:'Nunito Sans',sans-serif;font-weight:700;font-size:13px;padding:8px 14px;border-radius:7px;{{ hybridButtonStyle }}">Hybrid</button>
+            <button onClick="{{ onSetVirtual }}" style="cursor:pointer;font-family:'Nunito Sans',sans-serif;font-weight:700;font-size:13px;padding:8px 14px;border-radius:7px;{{ virtualButtonStyle }}">Virtual</button>
+          </div>
+          <sc-if value="{{ showLocationField }}" hint-placeholder-val="{{ true }}">
+            <input type="text" value="{{ location }}" onChange="{{ onLocationChange }}" placeholder="e.g. Room 12, Rooftop Terrace" style="width:100%;padding:11px 13px;border:1px solid #E4E3DD;border-radius:7px;font-family:'Nunito Sans',sans-serif;font-size:14.5px;color:#211E1E;background:#fff;outline:none;margin-bottom:{{ locationFieldMarginBottom }}" style-focus="border-color:#E93D44" />
+          </sc-if>
+          <sc-if value="{{ showVirtualField }}" hint-placeholder-val="{{ false }}">
+            <input type="text" value="{{ virtualLink }}" onChange="{{ onVirtualLinkChange }}" placeholder="e.g. Zoom, Google Meet link" style="width:100%;padding:11px 13px;border:1px solid #E4E3DD;border-radius:7px;font-family:'Nunito Sans',sans-serif;font-size:14.5px;color:#211E1E;background:#fff;outline:none" style-focus="border-color:#E93D44" />
+          </sc-if>
+        </div>
+
+        <div style="display:flex;gap:14px;flex-wrap:wrap">
+          <div style="flex:1 1 200px">
+            <label style="font-family:'Space Mono',monospace;font-weight:700;font-size:11px;letter-spacing:0.06em;text-transform:uppercase;color:#797873;display:block;margin-bottom:8px">Host Name</label>
+            <input type="text" value="{{ hostName }}" onChange="{{ onHostNameChange }}" placeholder="Your name" style="width:100%;padding:11px 13px;border:1px solid #E4E3DD;border-radius:7px;font-family:'Nunito Sans',sans-serif;font-size:14.5px;color:#211E1E;background:#fff;outline:none" style-focus="border-color:#E93D44" />
+          </div>
+          <div style="flex:1 1 200px">
+            <label style="font-family:'Space Mono',monospace;font-weight:700;font-size:11px;letter-spacing:0.06em;text-transform:uppercase;color:#797873;display:block;margin-bottom:8px">Host Team</label>
+            <input type="text" value="{{ hostTeam }}" onChange="{{ onHostTeamChange }}" placeholder="e.g. Design Systems" style="width:100%;padding:11px 13px;border:1px solid #E4E3DD;border-radius:7px;font-family:'Nunito Sans',sans-serif;font-size:14.5px;color:#211E1E;background:#fff;outline:none" style-focus="border-color:#E93D44" />
+          </div>
+        </div>
+
+        <div>
+          <label style="font-family:'Space Mono',monospace;font-weight:700;font-size:11px;letter-spacing:0.06em;text-transform:uppercase;color:#797873;display:block;margin-bottom:8px">Spots Available</label>
+          <input type="number" min="1" value="{{ capacity }}" onChange="{{ onCapacityChange }}" style="width:140px;padding:10px 12px;border:1px solid #E4E3DD;border-radius:7px;font-family:'Nunito Sans',sans-serif;font-size:14.5px;color:#211E1E;background:#fff;outline:none" style-focus="border-color:#E93D44" />
+        </div>
+
+        <div style="display:flex;gap:12px;margin-top:8px">
+          <button style="cursor:pointer;font-family:'Nunito Sans',sans-serif;font-weight:700;font-size:14.5px;padding:12px 22px;border-radius:7px;background:#E93D44;color:#fff;border:none">Publish event</button>
+        </div>
+      </div>
+
+      <div style="flex:0 1 360px;min-width:300px;position:sticky;top:20px">
+        <div style="font-family:'Space Mono',monospace;font-weight:700;font-size:11px;letter-spacing:0.08em;text-transform:uppercase;color:#797873;margin-bottom:12px">Preview &middot; how attendees will see it</div>
+        <article style="background:#fff;border:1px solid #E4E3DD;border-radius:10px;overflow:hidden;display:flex;flex-direction:column;box-shadow:0 1px 2px rgba(33,30,30,0.04)">
+          <div style="position:relative;aspect-ratio:16/10;overflow:hidden;background:#E4E3DD">
+            <image-slot id="create-event-cover-preview" shape="rect" placeholder="Cover photo"></image-slot>
+            <span style="position:absolute;top:12px;left:12px;font-family:'Space Mono',monospace;font-weight:700;font-size:11px;letter-spacing:0.06em;padding:5px 9px;border-radius:5px;text-transform:uppercase;{{ previewCategoryChipStyle }}">{{ previewCategoryLabel }}</span>
+          </div>
+          <div style="padding:16px 18px 18px;display:flex;flex-direction:column;gap:10px">
+            <div style="font-family:'Space Mono',monospace;font-weight:700;font-size:12px;letter-spacing:0.04em;color:#E93D44;text-transform:uppercase">{{ previewDateLabel }} &middot; {{ previewTimeLabel }}</div>
+            <h3 style="font-family:'Space Mono',monospace;font-weight:700;font-size:17px;line-height:1.35;margin:0;text-transform:uppercase;letter-spacing:0.005em">{{ previewTitle }}</h3>
+            <div style="display:flex;align-items:center;gap:8px">
+              <div style="width:22px;height:22px;border-radius:50%;flex:none;display:flex;align-items:center;justify-content:center;background:#26BDFB">
+                <span style="font-family:'Space Mono',monospace;font-weight:700;font-size:9px;color:#fff">{{ previewHostInitials }}</span>
+              </div>
+              <span style="font-size:13.5px;color:#5c5a57">Hosted by {{ previewHostName }} &middot; {{ previewHostTeam }}</span>
+            </div>
+            <div style="font-size:13.5px;color:#5c5a57">{{ previewLocation }}</div>
+            <div style="margin-top:4px;padding-top:8px;border-top:1px solid #F1F0EA;display:flex;align-items:center;justify-content:space-between;gap:10px">
+              <span style="font-size:12px;font-weight:700;padding:5px 9px;border-radius:5px;background:#F1F0EA;color:#797873">{{ previewSpotsText }}</span>
+              <button style="border:none;font-family:'Nunito Sans',sans-serif;font-weight:700;font-size:13.5px;padding:9px 16px;border-radius:7px;white-space:nowrap;background:#E93D44;color:#fff;opacity:0.55">Sign up</button>
+            </div>
+          </div>
+        </article>
+      </div>
+    </div>
+  </main>
+</div>
+
+</x-dc>
+<script type="text/x-dc" data-dc-script>
+const CATEGORY_STYLES = {
+  'Study Group': { background: '#1366B1', color: '#fff' },
+  'AMA': { background: '#8021F8', color: '#fff' },
+  'Workshop': { background: '#32A887', color: '#fff' },
+  'Social': { background: '#DDFD58', color: '#211E1E' },
+  'Other': { background: '#797873', color: '#fff' },
+};
+const CATEGORIES = ['Study Group', 'AMA', 'Workshop', 'Social', 'Other'];
+
+function formatDateLabel(dateStr) {
+  if (!dateStr) return 'SELECT A DATE';
+  const d = new Date(dateStr + 'T00:00:00');
+  if (isNaN(d.getTime())) return 'SELECT A DATE';
+  return d.toLocaleDateString('en-US', { weekday: 'short', month: 'short', day: 'numeric' }).toUpperCase().replace(',', ',');
+}
+function formatTime(t) {
+  if (!t) return null;
+  const [h, m] = t.split(':').map(Number);
+  const period = h >= 12 ? 'PM' : 'AM';
+  const h12 = h % 12 === 0 ? 12 : h % 12;
+  return h12 + ':' + String(m).padStart(2, '0') + ' ' + period;
+}
+function initials(name) {
+  if (!name) return '--';
+  const parts = name.trim().split(/\s+/);
+  return parts.slice(0, 2).map(p => p[0].toUpperCase()).join('');
+}
+
+class Component extends DCLogic {
+  state = {
+    eventType: 'Workshop',
+    title: '',
+    description: '',
+    date: '',
+    startTime: '',
+    endTime: '',
+    locationMode: 'in-person',
+    location: '',
+    virtualLink: '',
+    hostName: '',
+    hostTeam: '',
+    capacity: 20,
+  };
+
+  renderVals() {
+    const s = this.state;
+    const cat = CATEGORY_STYLES[s.eventType];
+
+    const categories = CATEGORIES.map(label => {
+      const selected = label === s.eventType;
+      const c = CATEGORY_STYLES[label];
+      return {
+        label: label,
+        onSelect: () => this.setState({ eventType: label }),
+        buttonStyle: selected
+          ? 'background:' + c.background + ';color:' + c.color + ';border:1.5px solid ' + c.background + ';'
+          : 'background:#fff;color:#5c5a57;border:1.5px solid #E4E3DD;',
+      };
+    });
+
+    const startLabel = formatTime(s.startTime);
+    const endLabel = formatTime(s.endTime);
+    const timeLabel = startLabel && endLabel ? (startLabel + ' \u2013 ' + endLabel) : (startLabel || 'SELECT A TIME');
+
+    const mode = s.locationMode;
+    const modeButtonStyle = (active) => active
+      ? 'background:#211E1E;color:#fff;border:1.5px solid #211E1E;'
+      : 'background:#fff;color:#5c5a57;border:1.5px solid #E4E3DD;';
+    let locationText;
+    if (mode === 'virtual') {
+      locationText = 'Virtual' + (s.virtualLink ? ' \u00b7 ' + s.virtualLink : ' \u00b7 Zoom');
+    } else if (mode === 'hybrid') {
+      locationText = (s.location || 'Room TBD') + ' + Virtual' + (s.virtualLink ? ' \u00b7 ' + s.virtualLink : '');
+    } else {
+      locationText = s.location || 'Add a room or building';
+    }
+
+    return {
+      categories: categories,
+      title: s.title,
+      onTitleChange: (e) => this.setState({ title: e.target.value }),
+      description: s.description,
+      onDescriptionChange: (e) => this.setState({ description: e.target.value }),
+      date: s.date,
+      onDateChange: (e) => this.setState({ date: e.target.value }),
+      startTime: s.startTime,
+      onStartTimeChange: (e) => this.setState({ startTime: e.target.value }),
+      endTime: s.endTime,
+      onEndTimeChange: (e) => this.setState({ endTime: e.target.value }),
+      onSetInPerson: () => this.setState({ locationMode: 'in-person' }),
+      onSetHybrid: () => this.setState({ locationMode: 'hybrid' }),
+      onSetVirtual: () => this.setState({ locationMode: 'virtual' }),
+      inPersonButtonStyle: modeButtonStyle(mode === 'in-person'),
+      hybridButtonStyle: modeButtonStyle(mode === 'hybrid'),
+      virtualButtonStyle: modeButtonStyle(mode === 'virtual'),
+      location: s.location,
+      onLocationChange: (e) => this.setState({ location: e.target.value }),
+      showLocationField: mode === 'in-person' || mode === 'hybrid',
+      virtualLink: s.virtualLink,
+      onVirtualLinkChange: (e) => this.setState({ virtualLink: e.target.value }),
+      showVirtualField: mode === 'virtual' || mode === 'hybrid',
+      locationFieldMarginBottom: mode === 'hybrid' ? '10px' : '0px',
+      hostName: s.hostName,
+      onHostNameChange: (e) => this.setState({ hostName: e.target.value }),
+      hostTeam: s.hostTeam,
+      onHostTeamChange: (e) => this.setState({ hostTeam: e.target.value }),
+      capacity: s.capacity,
+      onCapacityChange: (e) => this.setState({ capacity: e.target.value }),
+      previewCategoryLabel: s.eventType,
+      previewCategoryChipStyle: 'background:' + cat.background + ';color:' + cat.color + ';',
+      previewDateLabel: formatDateLabel(s.date),
+      previewTimeLabel: timeLabel,
+      previewTitle: s.title || 'Your event title',
+      previewHostInitials: initials(s.hostName),
+      previewHostName: s.hostName || 'You',
+      previewHostTeam: s.hostTeam || 'Your team',
+      previewLocation: locationText,
+      previewSpotsText: (s.capacity || 0) + ' spots available',
+    };
+  }
+}
+</script>
+</body>
+</html>
