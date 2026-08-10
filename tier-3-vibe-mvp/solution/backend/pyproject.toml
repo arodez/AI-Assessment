@@ -1,0 +1,66 @@
+[tool.poetry]
+name = "community-events-hub-backend"
+version = "0.1.0"
+description = "Community Events Hub backend (Flask + SQLAlchemy + SQLite)"
+authors = ["Javier Cervantes"]
+package-mode = false
+
+[tool.poetry.dependencies]
+python = "^3.12"
+flask = "^3.1"
+flask-sqlalchemy = "^3.1"
+python-dotenv = "^1.0"
+alembic = "^1.14"
+flask-jwt-extended = "^4.7"
+pydantic = {extras = ["email"], version = "^2.9"}
+pillow = "^11.0"
+flask-cors = "^5.0"
+
+[tool.poetry.group.dev.dependencies]
+pytest = "^8.3"
+pytest-cov = "^6.0"
+ruff = "^0.8"
+black = "^24.10"
+mypy = "^1.13"
+pre-commit = "^4.0"
+types-flask-cors = "^6.0.3.20260712"
+
+[tool.pytest.ini_options]
+# tests/ has no __init__.py, so pytest's default "prepend" import mode only
+# adds tests/ itself to sys.path, not its parent — without this, `app` and
+# `scripts` aren't importable when running `poetry run pytest` from here.
+pythonpath = ["."]
+addopts = "--cov=app --cov-report=term-missing --cov-fail-under=85"
+
+[tool.ruff]
+line-length = 88
+target-version = "py312"
+
+[tool.ruff.lint]
+select = ["E", "F", "I", "UP", "B"]
+
+[tool.ruff.lint.per-file-ignores]
+# Long lines here are prose (seed event descriptions), not logic — not
+# worth fighting natural word-wrap boundaries in a data file.
+"scripts/seed_data.py" = ["E501"]
+
+[tool.black]
+line-length = 88
+target-version = ["py312"]
+
+[tool.mypy]
+python_version = "3.12"
+disallow_untyped_defs = true
+warn_unused_ignores = true
+exclude = ["migrations/"]
+
+# Flask/SQLAlchemy/Flask-JWT-Extended's stub coverage varies across
+# versions — not worth fighting gaps in third-party dependencies for an
+# MVP; this project's own code (app/) still gets full checking above.
+[[tool.mypy.overrides]]
+module = ["flask_jwt_extended.*"]
+ignore_missing_imports = true
+
+[build-system]
+requires = ["poetry-core>=2.0"]
+build-backend = "poetry.core.masonry.api"
