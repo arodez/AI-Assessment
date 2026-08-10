@@ -159,7 +159,7 @@ JSON over HTTP for everything **except** event creation. Base path and versionin
 | `GET /event/:id/details` | any user | Single event's public details — no attendee data | `200 OK` | `401` · `400` bad id · `404` |
 | `GET /event/:id/attendance` | admin | Full roster for an event: name, email, `sign_up_at`, status | `200 OK` | `401` · `403` · `400` · `404` |
 | `GET /event/:id/attendance/download` | admin | CSV of the roster. Filename: `${event_name}-${start_date:YYYY-MM-DD}-${today:YYYY-MM-DD}.csv`. Columns: `full_name`, `email`, `sign_up_at`, `status` | `200 OK` | `401` · `403` · `400` · `404` |
-| `POST /event/:id/register` | any user | Caller signs themself up (identity from the JWT, not the body) | `201 Created` | `401` · `403` already confirmed · `400` event is full, or invalid input · `404` |
+| `POST /event/:id/register` | any user | Caller signs themself up (identity from the JWT, not the body) | `201 Created` | `401` · `400` event is full, already confirmed, or invalid input · `404` |
 | `DELETE /event/:id/register` | any user | Caller cancels their own registration (sets `status = 'Cancelled'`) | `204 No Content` | `401` · `400` no active registration · `404` |
 
 Every endpoint may additionally return `500 Internal Server Error` (unexpected server-side failure) or `503 Service Unavailable` (e.g., the database is temporarily unreachable) — omitted from the per-row lists above since they apply uniformly and aren't business-logic outcomes.
