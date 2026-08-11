@@ -95,7 +95,7 @@ On success, `POST /login` returns a **JWT** carrying `sub` (user id), `email`, a
 - **SQLite** for all structured data (users, events, registrations). A single `.db` file, created automatically on first run if missing.
 - A local **filesystem folder** for public event cover-image assets, served statically; the DB stores only the resulting path/URL, never the image bytes.
 - No in-memory caching layer in this MVP — SQLite is the only store, which also gives us durability across restarts for free.
-- Seed data loaded at DB init includes a fixture set of events for local development and grading: **two events per photo** available in [`mockups/project/assets/photos/`](../mockups/project/assets/photos/) (14 events total), with `start` dates spread across the remaining months of the current year from the deployment date. None are in the past — a past `start` would never show up on the Feed (§7.4 `GET /events`), so seeding one would be pointless.
+- Seed data loaded at DB init includes a fixture set of events for local development and grading: **five events per photo** available in [`mockups/project/assets/photos/`](../mockups/project/assets/photos/) (35 events total), with `start` dates spread across the remaining months of the current year from the deployment date and weighted toward the near term — more events in the nearest weeks, tapering off toward year end. None are in the past — a past `start` would never show up on the Feed (§7.4 `GET /events`), so seeding one would be pointless.
 
 ### 7.3 Data Model
 
