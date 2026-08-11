@@ -206,9 +206,11 @@ duplication).
 the full list of emails; these are the only accounts that can log in, since
 this MVP never creates users itself.
 
-**14 events** — 2 per each of the 7 photos in
+**35 events** — 5 per each of the 7 photos in
 `../../mockups/project/assets/photos/`, dated Aug–Dec 2026 (all in the
-future relative to this phase's build date), every `event_type` and
+future relative to this phase's build date), weighted toward the near
+term and tapering off by year end (11/9/7/5/3 events per month,
+Aug→Dec) rather than spread evenly, every `event_type` and
 `location_type` value used at least once, every optional field populated
 (no nulls). Full details in `scripts/seed_data.py::EVENTS`.
 

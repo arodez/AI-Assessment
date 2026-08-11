@@ -37,8 +37,9 @@ poetry run flask db-setup
 
 ## What you get after setup
 
-- `instance/app.db` — SQLite database with 8 seeded users and 14 seeded
-  events spanning Aug–Dec 2026 (see [`docs/DATABASE.md`](docs/DATABASE.md#seed-data)).
+- `instance/app.db` — SQLite database with 8 seeded users and 35 seeded
+  events spanning Aug–Dec 2026, weighted toward the near term (see
+  [`docs/DATABASE.md`](docs/DATABASE.md#seed-data)).
 - `uploads/events/` — the 7 event cover photos, copied from
   `../../mockups/project/assets/photos/`.
 
