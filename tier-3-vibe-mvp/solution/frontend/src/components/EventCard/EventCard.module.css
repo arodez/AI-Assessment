@@ -1,0 +1,86 @@
+.card {
+  cursor: pointer;
+  background: #fff;
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-card);
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+  box-shadow: var(--shadow-card);
+}
+
+.card.registered {
+  box-shadow: var(--shadow-registered-ring);
+}
+
+.imageWrap {
+  position: relative;
+  aspect-ratio: 16 / 10;
+  overflow: hidden;
+  background: var(--color-border);
+}
+
+.image {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+}
+
+.chipOverlay {
+  position: absolute;
+  top: 12px;
+  left: 12px;
+}
+
+.body {
+  padding: var(--card-body-padding);
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  flex: 1;
+}
+
+.dateTime {
+  font-family: var(--font-display);
+  font-weight: 700;
+  font-size: 12px;
+  letter-spacing: 0.04em;
+  color: var(--color-brand);
+  text-transform: uppercase;
+}
+
+.title {
+  font-family: var(--font-display);
+  font-weight: 700;
+  font-size: 17px;
+  line-height: 1.35;
+  margin: 0;
+  text-transform: uppercase;
+  letter-spacing: 0.005em;
+}
+
+.hostRow {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.hostText {
+  font-size: 13.5px;
+  color: var(--color-body-secondary);
+}
+
+.location {
+  font-size: 13.5px;
+  color: var(--color-body-secondary);
+}
+
+.footer {
+  margin-top: auto;
+  padding-top: 8px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 10px;
+}

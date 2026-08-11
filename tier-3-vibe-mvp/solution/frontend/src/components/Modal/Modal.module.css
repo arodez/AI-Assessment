@@ -1,0 +1,37 @@
+.backdrop {
+  position: fixed;
+  inset: 0;
+  background: var(--shadow-modal-backdrop);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 24px;
+  z-index: 50;
+}
+
+.panel {
+  background: #fff;
+  border-radius: var(--radius-modal);
+  max-width: 560px;
+  width: 100%;
+  max-height: 88vh;
+  overflow: auto;
+  position: relative;
+  box-shadow: var(--shadow-modal-panel);
+}
+
+.closeButton {
+  position: absolute;
+  top: 14px;
+  right: 14px;
+  width: 32px;
+  height: 32px;
+  border-radius: var(--radius-circle);
+  border: none;
+  background: var(--color-modal-close-bg);
+  cursor: pointer;
+  font-size: 18px;
+  color: var(--color-text);
+  z-index: 2;
+  line-height: 1;
+}

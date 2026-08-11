@@ -1,0 +1,74 @@
+.card {
+  display: flex;
+  gap: 18px;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: space-between;
+  padding: 18px 20px;
+  background: #fff;
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-card);
+  margin-bottom: 28px;
+}
+
+.identity {
+  display: flex;
+  gap: 14px;
+  align-items: center;
+  min-width: 260px;
+}
+
+.thumb {
+  width: 64px;
+  height: 64px;
+  object-fit: cover;
+  border-radius: var(--radius-thumb);
+  flex: none;
+}
+
+.chipWrap {
+  margin-bottom: 6px;
+}
+
+.title {
+  font-family: var(--font-display);
+  font-weight: 700;
+  font-size: 17px;
+  margin: 0 0 4px;
+  text-transform: uppercase;
+  letter-spacing: 0.005em;
+}
+
+.meta {
+  font-size: 13px;
+  color: var(--color-body-secondary);
+}
+
+.stats {
+  display: flex;
+  gap: 22px;
+  flex-wrap: wrap;
+}
+
+.statValue {
+  font-family: var(--font-display);
+  font-weight: 700;
+  font-size: 22px;
+}
+
+.statLabel {
+  font-family: var(--font-display);
+  font-weight: 700;
+  font-size: 10.5px;
+  letter-spacing: 0.06em;
+  color: var(--color-label);
+  text-transform: uppercase;
+}
+
+.confirmed {
+  color: var(--color-registered-text);
+}
+
+.cancelled {
+  color: var(--color-muted);
+}

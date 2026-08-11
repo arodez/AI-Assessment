@@ -1,0 +1,31 @@
+.section {
+  margin-bottom: var(--section-margin-bottom);
+}
+
+.header {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  margin-bottom: 18px;
+}
+
+.label {
+  font-family: var(--font-display);
+  font-weight: 700;
+  font-size: 13px;
+  letter-spacing: 0.08em;
+  color: var(--color-label);
+  text-transform: uppercase;
+}
+
+.divider {
+  flex: 1;
+  height: 1px;
+  background: var(--color-border);
+}
+
+.grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  gap: var(--card-grid-gap);
+}

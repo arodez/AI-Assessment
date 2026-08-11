@@ -1,0 +1,17 @@
+.group {
+  display: flex;
+  gap: 8px;
+  flex-wrap: wrap;
+}
+
+.chip {
+  cursor: pointer;
+  font-family: var(--font-body);
+  font-weight: 700;
+  font-size: 13px;
+  padding: 8px 14px;
+  border-radius: var(--radius-control);
+  background: #fff;
+  color: var(--color-body-secondary);
+  border: 1.5px solid var(--color-border);
+}
