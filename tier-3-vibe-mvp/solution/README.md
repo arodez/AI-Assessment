@@ -84,6 +84,8 @@ and seed data.
 
 - [`BRIEF.md`](BRIEF.md) — product brief (requirements, edge cases, acceptance criteria)
 - [`PROMPT_LOG.md`](PROMPT_LOG.md) — prompt/iteration history
+- [`SECURITY_CHECK.md`](SECURITY_CHECK.md) — manual security pass (secrets, input validation, data exposure)
+- [`VERIFICATION_NOTE.md`](VERIFICATION_NOTE.md) — manually verified flows, including a real mistake caught along the way
 - [`backend/README.md`](backend/README.md) — backend setup, environment variables, code quality commands
 - [`backend/docs/API.md`](backend/docs/API.md) — full endpoint reference
 - [`backend/docs/DATABASE.md`](backend/docs/DATABASE.md) — schema reference, ER diagram
