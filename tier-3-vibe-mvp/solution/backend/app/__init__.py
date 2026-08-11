@@ -33,7 +33,15 @@ def create_app(config_class: type[Config] = Config, init_db: bool = False) -> Fl
     db.init_app(app)
     jwt.init_app(app)
     cors.init_app(
-        app, resources={r"/*": {"origins": app.config["CORS_ALLOWED_ORIGINS"]}}
+        app,
+        resources={r"/*": {"origins": app.config["CORS_ALLOWED_ORIGINS"]}},
+        # Content-Disposition isn't in the browser's default CORS-safelisted
+        # response headers — without this, GET /event/:id/attendance/download
+        # sets the header fine, but fetch()'s response.headers.get() on the
+        # frontend just can't see it, so the client-side filename parsing
+        # silently falls back to a generic default instead of the real
+        # "<slug>-<start>-<today>.csv" name.
+        expose_headers=["Content-Disposition"],
     )
 
     from app import models  # noqa: F401 — registers tables on db.metadata

@@ -106,6 +106,30 @@ def test_attendance_download_csv_shape(
     assert lines[1] == "Grace Hopper,grace@company.com,2026-08-08T09:00:00,Confirmed"
 
 
+def test_attendance_download_exposes_content_disposition_via_cors(
+    client, make_user, make_event, auth_headers
+):
+    """Regression guard: Content-Disposition isn't in the browser's default
+    CORS-safelisted response headers, so a real cross-origin fetch()'s
+    response.headers.get('Content-Disposition') silently returns null unless
+    the server adds Access-Control-Expose-Headers — which the Flask test
+    client's other requests never exercise, since CORS is a browser-side
+    enforcement mechanism the test client doesn't simulate unless an Origin
+    header is actually sent, as done here.
+    """
+    admin = make_user(is_admin=True)
+    event = make_event()
+
+    resp = client.get(
+        f"/event/{event.id}/attendance/download",
+        headers={**auth_headers(admin), "Origin": "http://localhost:5173"},
+    )
+
+    assert resp.status_code == 200
+    exposed = resp.headers.get("Access-Control-Expose-Headers", "")
+    assert "Content-Disposition" in exposed
+
+
 def test_attendance_download_non_admin_forbidden(
     client, make_user, make_event, auth_headers
 ):
