@@ -1,0 +1,124 @@
+/* Design tokens extracted verbatim from mockups/project/*.dc.html.
+ * Imported once in main.tsx, before anything else renders — every CSS
+ * Module in the app pulls its values from these custom properties rather
+ * than hardcoding a color/font/radius directly.
+ */
+
+@font-face {
+  font-family: 'Space Mono';
+  src: url('../assets/fonts/SpaceMono-Regular.ttf') format('truetype');
+  font-weight: 400;
+  font-style: normal;
+}
+@font-face {
+  font-family: 'Space Mono';
+  src: url('../assets/fonts/SpaceMono-Bold.ttf') format('truetype');
+  font-weight: 700;
+  font-style: normal;
+}
+@font-face {
+  font-family: 'Nunito Sans';
+  src: url('../assets/fonts/NunitoSans-Variable.ttf') format('truetype-variations');
+  font-weight: 200 1000;
+  font-style: normal;
+}
+
+:root {
+  /* Base */
+  --color-bg: #fcfbf5;
+  --color-text: #211e1e;
+  --color-brand: #e93d44;
+  --color-border: #e4e3dd;
+  --color-link: #1366b1;
+  --color-link-hover: #0f4f88;
+  --color-muted: #a2a19c;
+  --color-body-secondary: #5c5a57;
+  --color-label: #797873;
+  --color-error: #ba2229;
+  --color-chip-neutral-bg: #f1f0ea;
+  --color-table-header-bg: #f7f6f0;
+  --color-registered-bg: rgba(50, 168, 135, 0.16);
+  --color-registered-text: #1f6f57;
+  --color-confirmed-pill-bg: rgba(50, 168, 135, 0.15);
+  --color-low-spots-bg: #ffcfd6;
+  --color-avatar-default: #26bdfb;
+  --shadow-card-tint: rgba(33, 30, 30, 0.04);
+  --shadow-modal-backdrop: rgba(33, 30, 30, 0.6);
+  --shadow-modal: rgba(33, 30, 30, 0.3);
+  --color-modal-close-bg: rgba(255, 255, 255, 0.92);
+
+  /* Category chip colors — keys correspond to the backend EventType enum
+     values (study_group/ama/workshop/social/other), consumed by
+     CategoryChip via a lookup map, not string interpolation into the
+     variable name (custom properties can't be dynamically named). */
+  --color-study-group-bg: #1366b1;
+  --color-study-group-text: #fff;
+  --color-ama-bg: #8021f8;
+  --color-ama-text: #fff;
+  --color-workshop-bg: #32a887;
+  --color-workshop-text: #fff;
+  --color-social-bg: #ddfd58;
+  --color-social-text: #211e1e;
+  --color-other-bg: #797873;
+  --color-other-text: #fff;
+
+  /* Avatar rotation palette (Avatar picks by index % length) */
+  --avatar-color-0: #26bdfb;
+  --avatar-color-1: #32a887;
+  --avatar-color-2: #8021f8;
+  --avatar-color-3: #ff5d5e;
+  --avatar-color-4: #1366b1;
+
+  /* Fonts */
+  --font-display: 'Space Mono', monospace;
+  --font-body: 'Nunito Sans', sans-serif;
+
+  /* Radii */
+  --radius-chip: 5px;
+  --radius-logo: 6px;
+  --radius-control: 7px; /* buttons, inputs, textareas */
+  --radius-thumb: 8px; /* organizer event thumbnail */
+  --radius-card: 10px; /* cards, table container */
+  --radius-modal: 12px; /* login card, modal */
+  --radius-circle: 50%;
+
+  /* Spacing */
+  --space-1: 8px;
+  --space-2: 10px;
+  --space-3: 12px;
+  --space-4: 14px;
+  --space-5: 16px;
+  --header-padding: 20px clamp(20px, 4vw, 56px);
+  --main-padding: clamp(28px, 4vw, 52px) clamp(20px, 4vw, 56px) 80px;
+  --card-body-padding: 16px 18px 18px;
+  --card-body-padding-compact: 12px 14px 14px;
+  --card-grid-gap: 24px;
+  --section-margin-bottom: 40px;
+
+  /* Shadows */
+  --shadow-card: 0 1px 2px var(--shadow-card-tint);
+  --shadow-modal-panel: 0 20px 60px var(--shadow-modal);
+  --shadow-registered-ring: 0 0 0 2px #32a887, 0 1px 2px var(--shadow-card-tint);
+}
+
+/* Global reset/base — mirrors the mockups' own global rules */
+* {
+  box-sizing: border-box;
+}
+body {
+  margin: 0;
+  background: var(--color-bg);
+  color: var(--color-text);
+  font-family: var(--font-body);
+  text-wrap: pretty;
+}
+a {
+  color: var(--color-link);
+}
+a:hover {
+  color: var(--color-link-hover);
+}
+input::placeholder,
+textarea::placeholder {
+  color: var(--color-muted);
+}

@@ -1,0 +1,311 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+
+<helmet>
+<style>
+@font-face{font-family:'Space Mono';src:url('./assets/fonts/SpaceMono-Regular.ttf') format('truetype');font-weight:400;font-style:normal}
+@font-face{font-family:'Space Mono';src:url('./assets/fonts/SpaceMono-Bold.ttf') format('truetype');font-weight:700;font-style:normal}
+@font-face{font-family:'Nunito Sans';src:url('./assets/fonts/NunitoSans-Variable.ttf') format('truetype-variations');font-weight:200 1000;font-style:normal}
+body{margin:0;background:#FCFBF5;font-family:'Nunito Sans',sans-serif;text-wrap:pretty}
+a{color:#1366B1}
+a:hover{color:#0f4f88}
+*{box-sizing:border-box}
+</style>
+</helmet>
+<div style="min-height:100vh;background:#FCFBF5;color:#211E1E">
+  <header style="display:flex;align-items:center;justify-content:space-between;gap:16px;flex-wrap:wrap;padding:20px clamp(20px,4vw,56px);border-bottom:1px solid #E4E3DD">
+    <div style="display:flex;align-items:center;gap:12px">
+      <div style="width:34px;height:34px;background:#E93D44;border-radius:6px;display:flex;align-items:center;justify-content:center;flex:none">
+        <span style="font-family:'Space Mono',monospace;font-weight:700;color:#FCFBF5;font-size:18px">E</span>
+      </div>
+      <div style="font-family:'Space Mono',monospace;font-weight:700;font-size:18px;letter-spacing:0.02em">EVENTS HUB</div>
+    </div>
+    <div style="display:flex;align-items:center;gap:16px">
+      <sc-if value="{{ isAdmin }}" hint-placeholder-val="{{ false }}">
+        <a href="./Community%20Events%20Hub%20-%20Create%20Event.dc.html" style="text-decoration:none;cursor:pointer;font-family:'Nunito Sans',sans-serif;font-weight:700;font-size:13.5px;padding:9px 16px;border-radius:7px;background:#E93D44;color:#fff">+ Create an Event</a>
+      </sc-if>
+      <div style="display:flex;align-items:center;gap:14px">
+        <span style="font-size:15px;color:#4a4846">Hey, {{ userFirstName }}</span>
+        <div style="width:36px;height:36px;border-radius:50%;background:#26BDFB;display:flex;align-items:center;justify-content:center;flex:none">
+          <span style="font-family:'Space Mono',monospace;font-weight:700;color:#fff;font-size:13px">{{ userInitials }}</span>
+        </div>
+        <a href="./Community%20Events%20Hub%20-%20Login.dc.html" onClick="{{ onSignOut }}" style="font-size:12.5px;color:#a2a19c;text-decoration:underline">Switch account</a>
+      </div>
+    </div>
+  </header>
+
+  <main style="max-width:1240px;margin:0 auto;padding:clamp(28px,4vw,52px) clamp(20px,4vw,56px) 80px">
+    <div style="margin-bottom:36px;max-width:640px">
+      <h1 style="font-family:'Space Mono',monospace;font-weight:700;font-size:clamp(28px,3.6vw,42px);letter-spacing:0.01em;margin:0 0 10px;text-transform:uppercase">Upcoming Events</h1>
+      <p style="font-size:16px;line-height:1.5;color:#5c5a57;margin:0">Study groups, AMAs, workshops, and get-togethers happening across the company. Grab a spot before it's gone.</p>
+    </div>
+
+    <sc-for list="{{ weeks }}" as="week" hint-placeholder-count="2">
+      <section style="margin-bottom:{{ week.sectionMarginBottom }}">
+        <div style="display:flex;align-items:center;gap:12px;margin-bottom:{{ week.headerMarginBottom }}">
+          <span style="font-family:'Space Mono',monospace;font-weight:700;font-size:13px;letter-spacing:0.08em;color:#797873;text-transform:uppercase">{{ week.label }}</span>
+          <div style="flex:1;height:1px;background:#E4E3DD"></div>
+        </div>
+        <div style="display:grid;grid-template-columns:{{ week.gridColumns }};gap:{{ week.cardGap }}">
+          <sc-for list="{{ week.events }}" as="ev" hint-placeholder-count="3">
+            <article onClick="{{ ev.onCardClick }}" style="cursor:pointer;background:#fff;border:1px solid #E4E3DD;border-radius:10px;overflow:hidden;display:flex;flex-direction:column;box-shadow:0 1px 2px rgba(33,30,30,0.04);{{ ev.cardExtraStyle }}">
+              <div style="position:relative;aspect-ratio:{{ ev.imageAspect }};overflow:hidden;background:#E4E3DD">
+                <img src="{{ ev.photo }}" alt="{{ ev.categoryLabel }} event photo" style="width:100%;height:100%;object-fit:cover;display:block" />
+                <span style="position:absolute;top:12px;left:12px;font-family:'Space Mono',monospace;font-weight:700;font-size:11px;letter-spacing:0.06em;padding:5px 9px;border-radius:5px;text-transform:uppercase;{{ ev.categoryChipStyle }}">{{ ev.categoryLabel }}</span>
+              </div>
+              <div style="padding:{{ ev.bodyPadding }};display:flex;flex-direction:column;gap:10px;flex:1">
+                <div style="font-family:'Space Mono',monospace;font-weight:700;font-size:12px;letter-spacing:0.04em;color:#E93D44;text-transform:uppercase">{{ ev.dateLabel }} &middot; {{ ev.timeLabel }}</div>
+                <h3 style="font-family:'Space Mono',monospace;font-weight:700;font-size:17px;line-height:1.35;margin:0;text-transform:uppercase;letter-spacing:0.005em">{{ ev.title }}</h3>
+                <sc-if value="{{ ev.showHost }}" hint-placeholder-val="{{ true }}">
+                  <div style="display:flex;align-items:center;gap:8px">
+                    <sc-if value="{{ ev.showAvatar }}" hint-placeholder-val="{{ true }}">
+                      <div style="width:22px;height:22px;border-radius:50%;flex:none;display:flex;align-items:center;justify-content:center;{{ ev.avatarStyle }}">
+                        <span style="font-family:'Space Mono',monospace;font-weight:700;font-size:9px;color:#fff">{{ ev.hostInitials }}</span>
+                      </div>
+                    </sc-if>
+                    <span style="font-size:13.5px;color:#5c5a57">Hosted by {{ ev.hostName }} &middot; {{ ev.hostTeam }}</span>
+                  </div>
+                </sc-if>
+                <div style="font-size:13.5px;color:#5c5a57">{{ ev.location }}</div>
+                <div style="margin-top:auto;padding-top:8px;display:flex;align-items:center;justify-content:space-between;gap:10px">
+                  <span style="font-size:12px;font-weight:700;padding:5px 9px;border-radius:5px;{{ ev.spotsStyle }}">{{ ev.spotsText }}</span>
+                  <div style="display:flex;align-items:center;gap:10px">
+                    <sc-if value="{{ ev.showCancelLink }}" hint-placeholder-val="{{ false }}">
+                      <button onClick="{{ ev.onCancel }}" style="border:none;background:none;cursor:pointer;font-family:'Nunito Sans',sans-serif;font-weight:700;font-size:12.5px;color:#BA2229;text-decoration:underline;padding:0">Cancel</button>
+                    </sc-if>
+                    <sc-if value="{{ ev.showMainCta }}" hint-placeholder-val="{{ true }}">
+                      <button onClick="{{ ev.onCta }}" style="border:none;font-family:'Nunito Sans',sans-serif;font-weight:700;font-size:13.5px;padding:9px 16px;border-radius:7px;white-space:nowrap;{{ ev.ctaStyle }}">{{ ev.ctaText }}</button>
+                    </sc-if>
+                  </div>
+                </div>
+              </div>
+            </article>
+          </sc-for>
+        </div>
+      </section>
+    </sc-for>
+
+    <sc-if value="{{ hasSelectedEvent }}" hint-placeholder-val="{{ false }}">
+      <div onClick="{{ onCloseModal }}" style="position:fixed;inset:0;background:rgba(33,30,30,0.6);display:flex;align-items:center;justify-content:center;padding:24px;z-index:50">
+        <div onClick="{{ stopPropagation }}" style="background:#fff;border-radius:12px;max-width:560px;width:100%;max-height:88vh;overflow:auto;position:relative;box-shadow:0 20px 60px rgba(33,30,30,0.3)">
+          <button onClick="{{ onCloseModal }}" style="position:absolute;top:14px;right:14px;width:32px;height:32px;border-radius:50%;border:none;background:rgba(255,255,255,0.92);cursor:pointer;font-size:18px;color:#211E1E;z-index:2;line-height:1">&times;</button>
+          <div style="position:relative;aspect-ratio:16/9;overflow:hidden;background:#E4E3DD">
+            <img src="{{ selectedEvent.photo }}" alt="{{ selectedEvent.categoryLabel }} event photo" style="width:100%;height:100%;object-fit:cover;display:block" />
+            <span style="position:absolute;top:14px;left:14px;font-family:'Space Mono',monospace;font-weight:700;font-size:11px;letter-spacing:0.06em;padding:5px 9px;border-radius:5px;text-transform:uppercase;{{ selectedEvent.categoryChipStyle }}">{{ selectedEvent.categoryLabel }}</span>
+          </div>
+          <div style="padding:22px 26px 26px;display:flex;flex-direction:column;gap:14px">
+            <div style="font-family:'Space Mono',monospace;font-weight:700;font-size:12.5px;letter-spacing:0.04em;color:#E93D44;text-transform:uppercase">{{ selectedEvent.dateLabel }} &middot; {{ selectedEvent.timeLabel }}</div>
+            <h2 style="font-family:'Space Mono',monospace;font-weight:700;font-size:22px;line-height:1.3;margin:0;text-transform:uppercase">{{ selectedEvent.title }}</h2>
+            <div style="display:flex;align-items:center;gap:10px">
+              <div style="width:28px;height:28px;border-radius:50%;flex:none;display:flex;align-items:center;justify-content:center;{{ selectedEvent.avatarStyle }}">
+                <span style="font-family:'Space Mono',monospace;font-weight:700;font-size:11px;color:#fff">{{ selectedEvent.hostInitials }}</span>
+              </div>
+              <div style="font-size:14px;color:#5c5a57">Hosted by <strong style="color:#211E1E">{{ selectedEvent.hostName }}</strong> &middot; {{ selectedEvent.hostTeam }}</div>
+            </div>
+            <div style="font-size:14px;color:#5c5a57">{{ selectedEvent.location }}</div>
+            <p style="font-size:14.5px;line-height:1.6;color:#3d3b39;margin:4px 0 0">{{ selectedEvent.description }}</p>
+            <div style="display:flex;align-items:center;justify-content:space-between;gap:12px;margin-top:8px;padding-top:16px;border-top:1px solid #F1F0EA">
+              <div>
+                <span style="font-size:12px;font-weight:700;padding:5px 9px;border-radius:5px;{{ selectedEvent.spotsStyle }}">{{ selectedEvent.spotsText }}</span>
+                <div style="font-size:12px;color:#a2a19c;margin-top:6px">{{ selectedEvent.filled }} of {{ selectedEvent.capacity }} spots filled</div>
+              </div>
+              <div style="display:flex;align-items:center;gap:10px">
+                <sc-if value="{{ isAdmin }}" hint-placeholder-val="{{ false }}">
+                  <a href="./Community%20Events%20Hub%20-%20Organizer%20View.dc.html" style="text-decoration:none;cursor:pointer;font-family:'Nunito Sans',sans-serif;font-weight:700;font-size:13.5px;padding:9px 14px;border-radius:7px;background:#fff;color:#211E1E;border:1px solid #E4E3DD;white-space:nowrap">Attendance List</a>
+                </sc-if>
+                <sc-if value="{{ selectedEvent.showCancelLink }}" hint-placeholder-val="{{ false }}">
+                  <button onClick="{{ selectedEvent.onCancel }}" style="border:none;background:none;cursor:pointer;font-family:'Nunito Sans',sans-serif;font-weight:700;font-size:12.5px;color:#BA2229;text-decoration:underline;padding:0">Cancel registration</button>
+                </sc-if>
+                <sc-if value="{{ selectedEvent.showMainCta }}" hint-placeholder-val="{{ true }}">
+                  <button onClick="{{ selectedEvent.onCta }}" style="border:none;font-family:'Nunito Sans',sans-serif;font-weight:700;font-size:14px;padding:10px 18px;border-radius:7px;white-space:nowrap;{{ selectedEvent.ctaStyle }}">{{ selectedEvent.ctaText }}</button>
+                </sc-if>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </sc-if>
+  </main>
+</div>
+
+</x-dc>
+<script type="text/x-dc" data-dc-script data-props="{&quot;density&quot;: {&quot;editor&quot;: &quot;enum&quot;, &quot;default&quot;: &quot;comfortable&quot;, &quot;options&quot;: [&quot;comfortable&quot;, &quot;compact&quot;], &quot;tsType&quot;: &quot;string&quot;, &quot;section&quot;: &quot;Layout&quot;}, &quot;showHostAvatar&quot;: {&quot;editor&quot;: &quot;boolean&quot;, &quot;default&quot;: true, &quot;tsType&quot;: &quot;boolean&quot;, &quot;section&quot;: &quot;Layout&quot;}, &quot;highlightRegistered&quot;: {&quot;editor&quot;: &quot;boolean&quot;, &quot;default&quot;: true, &quot;tsType&quot;: &quot;boolean&quot;, &quot;section&quot;: &quot;Layout&quot;}}">
+const CATEGORY_STYLES = {
+  'Study Group': { background: '#1366B1', color: '#fff' },
+  'AMA': { background: '#8021F8', color: '#fff' },
+  'Workshop': { background: '#32A887', color: '#fff' },
+  'Social': { background: '#DDFD58', color: '#211E1E' },
+};
+
+const AVATAR_COLORS = ['#26BDFB', '#32A887', '#8021F8', '#FF5D5E', '#1366B1'];
+
+const RAW_EVENTS = [
+  { week: 'This Week', category: 'Study Group', dateLabel: 'TUE, AUG 11', timeLabel: '5:30 – 6:30 PM',
+    title: 'SQL for Non-Engineers', hostName: 'Priya N.', hostTeam: 'Data Team', hostInitials: 'PN',
+    location: 'Room 4B \u00b7 Rooftop Floor', photo: './assets/photos/study-classroom.jpg',
+    spots: 8, capacity: 12, status: 'open',
+    description: "A hands-on session for anyone who wants to pull their own data without waiting on the Data Team. We'll cover SELECT statements, joins, and how to avoid the queries that make your laptop cry. Bring your own laptop \u2014 no prior SQL experience needed." },
+  { week: 'This Week', category: 'AMA', dateLabel: 'WED, AUG 12', timeLabel: '12:00 – 12:45 PM',
+    title: 'AMA: Navigating Your Career Ladder', hostName: 'Marcus T.', hostTeam: 'People Team', hostInitials: 'MT',
+    location: 'Virtual \u00b7 Zoom', photo: './assets/photos/ama-room.jpg',
+    spots: 2, capacity: 40, status: 'low',
+    description: "Marcus opens the floor for an honest, no-slides conversation about promotions, lateral moves, and what actually gets noticed in performance reviews. Drop your questions live or submit them anonymously beforehand." },
+  { week: 'This Week', category: 'Workshop', dateLabel: 'THU, AUG 13', timeLabel: '3:00 – 5:00 PM',
+    title: 'Figma Variables Workshop', hostName: 'Elena R.', hostTeam: 'Design Systems', hostInitials: 'ER',
+    location: 'Room 12 \u00b7 The Studio', photo: './assets/photos/workshop-studio.jpg',
+    spots: 0, capacity: 20, status: 'full',
+    description: "Learn how our design system uses variables and modes to ship consistent, themeable components. Elena walks through real examples from the design system library, then you'll build your own variable set. Laptops with the Figma desktop app required." },
+  { week: 'This Week', category: 'Social', dateLabel: 'FRI, AUG 14', timeLabel: '6:00 – 8:00 PM',
+    title: 'Rooftop Trivia Night', hostName: 'Culture Crew', hostTeam: 'People Team', hostInitials: 'CC',
+    location: 'Rooftop Terrace', photo: './assets/photos/rooftop-social.jpg',
+    spots: 14, capacity: 50, status: 'registered',
+    description: "Six rounds, snacks, and bragging rights. Teams of up to five \u2014 come solo and we'll match you with a crew. Winning team gets first pick of the swag closet." },
+  { week: 'Next Week', category: 'Study Group', dateLabel: 'MON, AUG 17', timeLabel: '5:00 – 6:00 PM',
+    title: 'Spanish Conversation Circle', hostName: 'Diego M.', hostTeam: 'Bogot\u00e1 Office', hostInitials: 'DM',
+    location: 'Virtual \u00b7 Zoom', photo: './assets/photos/rooftop-lounge.jpg',
+    spots: 4, capacity: 10, status: 'low',
+    description: "A relaxed weekly practice space for any level, from \u201cjust started Duolingo\u201d to \u201cmostly fluent but rusty.\u201d Diego leads a loose set of prompts, but mostly we just talk." },
+  { week: 'Next Week', category: 'Workshop', dateLabel: 'TUE, AUG 18', timeLabel: '11:00 AM – 12:30 PM',
+    title: 'Intro to Prompt Engineering', hostName: 'Sam K.', hostTeam: 'AI Platform', hostInitials: 'SK',
+    location: 'Virtual \u00b7 Zoom', photo: './assets/photos/rooftop-swing.jpg',
+    spots: 45, capacity: 60, status: 'open',
+    description: "A practical look at getting better output from LLMs: prompt structure, context windows, and common failure modes. Sam shares the internal prompt library and takes questions on your own use cases." },
+];
+
+class Component extends DCLogic {
+  state = { statusOverrides: {}, selectedIdx: null };
+
+  buildEvent(raw, idx, density, highlightRegistered, status) {
+    const cat = CATEGORY_STYLES[raw.category];
+    const compact = density === 'compact';
+    let spotsText, spotsBg, spotsColor;
+    if (status === 'full') {
+      spotsText = 'Fully booked';
+      spotsBg = '#211E1E'; spotsColor = '#fff';
+    } else if (status === 'registered') {
+      spotsText = "You're going \u2713";
+      spotsBg = 'rgba(50,168,135,0.16)'; spotsColor = '#1f6f57';
+    } else if (status === 'canceled') {
+      spotsText = 'Canceled';
+      spotsBg = '#F1F0EA'; spotsColor = '#a2a19c';
+    } else if (status === 'low') {
+      spotsText = 'Only ' + raw.spots + ' left';
+      spotsBg = '#FFCFD6'; spotsColor = '#BA2229';
+    } else {
+      spotsText = raw.spots + ' spots left';
+      spotsBg = '#F1F0EA'; spotsColor = '#797873';
+    }
+    let ctaText, ctaBg, ctaColor, ctaBorder, onCta;
+    const showMainCta = status !== 'registered';
+    if (status === 'full') {
+      ctaText = 'Fully booked'; ctaBg = '#F1F0EA'; ctaColor = '#a2a19c'; ctaBorder = '1px solid #E4E3DD';
+      onCta = (e) => { e.stopPropagation(); };
+    } else if (status === 'canceled') {
+      ctaText = 'Sign up again'; ctaBg = '#E93D44'; ctaColor = '#fff'; ctaBorder = 'none';
+      onCta = (e) => { e.stopPropagation(); this.setState(s => ({ statusOverrides: { ...s.statusOverrides, [idx]: 'registered' } })); };
+    } else {
+      ctaText = 'Sign up'; ctaBg = '#E93D44'; ctaColor = '#fff'; ctaBorder = 'none';
+      onCta = (e) => { e.stopPropagation(); };
+    }
+    let cardExtraStyle = '';
+    if (highlightRegistered && status === 'registered') {
+      cardExtraStyle = 'box-shadow:0 0 0 2px #32A887,0 1px 2px rgba(33,30,30,0.04);';
+    }
+    const filled = Math.max(raw.capacity - (raw.spots || 0), 0);
+    return {
+      photo: raw.photo,
+      imageAspect: compact ? '16/8' : '16/10',
+      categoryLabel: raw.category,
+      categoryChipStyle: 'background:' + cat.background + ';color:' + cat.color + ';',
+      dateLabel: raw.dateLabel,
+      timeLabel: raw.timeLabel,
+      title: raw.title,
+      showHost: true,
+      showAvatar: true,
+      hostName: raw.hostName,
+      hostTeam: raw.hostTeam,
+      hostInitials: raw.hostInitials,
+      avatarStyle: 'background:' + AVATAR_COLORS[idx % AVATAR_COLORS.length] + ';',
+      location: raw.location,
+      spotsText: spotsText,
+      spotsStyle: 'background:' + spotsBg + ';color:' + spotsColor + ';',
+      ctaText: ctaText,
+      ctaStyle: 'background:' + ctaBg + ';color:' + ctaColor + ';border:' + ctaBorder + ';cursor:' + (status === 'full' ? 'not-allowed' : 'pointer') + ';',
+      onCta: onCta,
+      showMainCta: showMainCta,
+      showCancelLink: status === 'registered',
+      onCancel: (e) => { e.stopPropagation(); this.setState(s => ({ statusOverrides: { ...s.statusOverrides, [idx]: 'canceled' } })); },
+      bodyPadding: compact ? '12px 14px 14px' : '16px 18px 18px',
+      cardExtraStyle: cardExtraStyle,
+      description: raw.description,
+      capacity: raw.capacity,
+      filled: filled,
+      onCardClick: () => this.setState({ selectedIdx: idx }),
+    };
+  }
+
+  renderVals() {
+    const density = this.props.density ?? 'comfortable';
+    const showHostAvatar = this.props.showHostAvatar ?? true;
+    const highlightRegistered = this.props.highlightRegistered ?? true;
+    const compact = density === 'compact';
+
+    const builtEvents = RAW_EVENTS.map((raw, idx) => {
+      const status = this.state.statusOverrides[idx] || raw.status;
+      const ev = this.buildEvent(raw, idx, density, highlightRegistered, status);
+      ev.showAvatar = showHostAvatar;
+      return ev;
+    });
+
+    const grouped = {};
+    const order = [];
+    RAW_EVENTS.forEach((raw, idx) => {
+      if (!grouped[raw.week]) { grouped[raw.week] = []; order.push(raw.week); }
+      grouped[raw.week].push(builtEvents[idx]);
+    });
+
+    const weeks = order.map(label => ({
+      label: label,
+      events: grouped[label],
+      gridColumns: 'repeat(auto-fit, minmax(300px, 1fr))',
+      cardGap: compact ? '16px' : '24px',
+      headerMarginBottom: compact ? '14px' : '18px',
+      sectionMarginBottom: compact ? '28px' : '40px',
+    }));
+
+    const selectedIdx = this.state.selectedIdx;
+    const hasSelectedEvent = selectedIdx != null;
+    const selectedEvent = hasSelectedEvent ? builtEvents[selectedIdx] : null;
+
+    let role = 'attendee', email = '';
+    try {
+      role = localStorage.getItem('eventsHubRole') || 'attendee';
+      email = localStorage.getItem('eventsHubEmail') || '';
+    } catch (e) {}
+    const namePart = email.split('@')[0].split(/[.+_]/)[0];
+    const userFirstName = namePart ? namePart.charAt(0).toUpperCase() + namePart.slice(1) : 'Jordan';
+    const userInitials = namePart ? namePart.slice(0, 2).toUpperCase() : 'JR';
+
+    return {
+      userFirstName: userFirstName,
+      userInitials: userInitials,
+      isAdmin: role === 'admin',
+      onSignOut: () => { try { localStorage.removeItem('eventsHubRole'); localStorage.removeItem('eventsHubEmail'); } catch (e) {} },
+      weeks: weeks,
+      hasSelectedEvent: hasSelectedEvent,
+      selectedEvent: selectedEvent || {},
+      onCloseModal: () => this.setState({ selectedIdx: null }),
+      stopPropagation: (e) => e.stopPropagation(),
+    };
+  }
+}
+</script>
+</body>
+</html>

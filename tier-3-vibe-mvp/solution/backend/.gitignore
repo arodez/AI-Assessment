@@ -1,0 +1,10 @@
+# --- Community Events Hub backend ---
+__pycache__/
+**/__pycache__/
+*.pyc
+.venv/
+.pytest_cache/
+instance/
+uploads/
+.env
+.coverage*

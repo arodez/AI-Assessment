@@ -1,0 +1,40 @@
+.page {
+  min-height: 100vh;
+}
+
+.main {
+  max-width: 1240px;
+  margin: 0 auto;
+  padding: var(--main-padding);
+}
+
+.intro {
+  margin-bottom: 36px;
+  max-width: 640px;
+}
+
+.heading {
+  font-family: var(--font-display);
+  font-weight: 700;
+  font-size: clamp(28px, 3.6vw, 42px);
+  letter-spacing: 0.01em;
+  margin: 0 0 10px;
+  text-transform: uppercase;
+}
+
+.subheading {
+  font-size: 16px;
+  line-height: 1.5;
+  color: var(--color-body-secondary);
+  margin: 0;
+}
+
+.emptyState {
+  font-size: 15px;
+  color: var(--color-body-secondary);
+}
+
+.errorState {
+  font-size: 15px;
+  color: var(--color-error);
+}

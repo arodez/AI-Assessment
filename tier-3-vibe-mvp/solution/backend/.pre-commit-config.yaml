@@ -1,0 +1,40 @@
+# Scoped to this project only (`files:` on every hook), and NOT installed
+# as an actual git hook — the real git repo root is the parent
+# AI-Assessment monorepo, which already has a different project's
+# pre-commit hook installed there. Use manually or in CI:
+#
+#   poetry run pre-commit run --all-files
+#
+# Deliberately excludes pytest — slower than a hook should be; run it
+# separately (`poetry run pytest`).
+repos:
+  - repo: https://github.com/pre-commit/pre-commit-hooks
+    rev: v5.0.0
+    hooks:
+      - id: trailing-whitespace
+        files: ^tier-3-vibe-mvp/solution/backend/
+      - id: end-of-file-fixer
+        files: ^tier-3-vibe-mvp/solution/backend/
+
+  - repo: https://github.com/astral-sh/ruff-pre-commit
+    rev: v0.8.6
+    hooks:
+      - id: ruff
+        args: [--fix]
+        files: ^tier-3-vibe-mvp/solution/backend/
+
+  - repo: https://github.com/psf/black
+    rev: 24.10.0
+    hooks:
+      - id: black
+        files: ^tier-3-vibe-mvp/solution/backend/
+
+  - repo: https://github.com/pre-commit/mirrors-mypy
+    rev: v1.13.0
+    hooks:
+      - id: mypy
+        files: ^tier-3-vibe-mvp/solution/backend/app/
+        additional_dependencies:
+          - flask-sqlalchemy
+          - flask-jwt-extended
+          - pydantic

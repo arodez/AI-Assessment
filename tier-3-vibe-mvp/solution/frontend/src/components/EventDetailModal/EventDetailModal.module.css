@@ -1,0 +1,107 @@
+.imageWrap {
+  position: relative;
+  aspect-ratio: 16 / 9;
+  overflow: hidden;
+  background: var(--color-border);
+}
+
+.image {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+}
+
+.chipOverlay {
+  position: absolute;
+  top: 14px;
+  left: 14px;
+}
+
+.body {
+  padding: 22px 26px 26px;
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+}
+
+.dateTime {
+  font-family: var(--font-display);
+  font-weight: 700;
+  font-size: 12.5px;
+  letter-spacing: 0.04em;
+  color: var(--color-brand);
+  text-transform: uppercase;
+}
+
+.title {
+  font-family: var(--font-display);
+  font-weight: 700;
+  font-size: 22px;
+  line-height: 1.3;
+  margin: 0;
+  text-transform: uppercase;
+}
+
+.hostRow {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.hostText {
+  font-size: 14px;
+  color: var(--color-body-secondary);
+}
+
+.hostText strong {
+  color: var(--color-text);
+}
+
+.location {
+  font-size: 14px;
+  color: var(--color-body-secondary);
+}
+
+.description {
+  font-size: 14.5px;
+  line-height: 1.6;
+  color: #3d3b39;
+  margin: 4px 0 0;
+}
+
+.footer {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+  margin-top: 8px;
+  padding-top: 16px;
+  border-top: 1px solid var(--color-chip-neutral-bg);
+}
+
+.filledCaption {
+  font-size: 12px;
+  color: var(--color-muted);
+  margin-top: 6px;
+}
+
+.actions {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.attendanceLink {
+  text-decoration: none;
+  cursor: pointer;
+  font-family: var(--font-body);
+  font-weight: 700;
+  font-size: 13.5px;
+  padding: 9px 14px;
+  border-radius: var(--radius-control);
+  background: #fff;
+  color: var(--color-text);
+  border: 1px solid var(--color-border);
+  white-space: nowrap;
+}

@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+
+<helmet>
+<style>
+@font-face{font-family:'Space Mono';src:url('./assets/fonts/SpaceMono-Regular.ttf') format('truetype');font-weight:400;font-style:normal}
+@font-face{font-family:'Space Mono';src:url('./assets/fonts/SpaceMono-Bold.ttf') format('truetype');font-weight:700;font-style:normal}
+@font-face{font-family:'Nunito Sans';src:url('./assets/fonts/NunitoSans-Variable.ttf') format('truetype-variations');font-weight:200 1000;font-style:normal}
+body{margin:0;background:#FCFBF5;font-family:'Nunito Sans',sans-serif;text-wrap:pretty}
+a{color:#1366B1}
+a:hover{color:#0f4f88}
+*{box-sizing:border-box}
+input::placeholder{color:#a2a19c}
+</style>
+</helmet>
+<div style="min-height:100vh;background:#FCFBF5;color:#211E1E;display:flex;flex-direction:column">
+  <header style="padding:20px clamp(20px,4vw,56px)">
+    <div style="display:flex;align-items:center;gap:12px">
+      <div style="width:34px;height:34px;background:#E93D44;border-radius:6px;display:flex;align-items:center;justify-content:center;flex:none">
+        <span style="font-family:'Space Mono',monospace;font-weight:700;color:#FCFBF5;font-size:18px">E</span>
+      </div>
+      <div style="font-family:'Space Mono',monospace;font-weight:700;font-size:18px;letter-spacing:0.02em">EVENTS HUB</div>
+    </div>
+  </header>
+
+  <main style="flex:1;display:flex;align-items:center;justify-content:center;padding:20px 20px 80px">
+    <div style="width:100%;max-width:400px;background:#fff;border:1px solid #E4E3DD;border-radius:12px;padding:32px 28px;box-shadow:0 1px 2px rgba(33,30,30,0.04)">
+      <h1 style="font-family:'Space Mono',monospace;font-weight:700;font-size:24px;letter-spacing:0.01em;margin:0 0 8px;text-transform:uppercase">Welcome</h1>
+      <p style="font-size:14.5px;line-height:1.5;color:#5c5a57;margin:0 0 22px">Enter your work email — we'll take care of the rest.</p>
+
+      <label style="font-family:'Space Mono',monospace;font-weight:700;font-size:11px;letter-spacing:0.06em;text-transform:uppercase;color:#797873;display:block;margin-bottom:8px">Work Email</label>
+      <input type="email" value="{{ email }}" onChange="{{ onEmailChange }}" onKeyDown="{{ onKeyDown }}" placeholder="you@company.com" style="width:100%;padding:11px 13px;border:1px solid {{ inputBorderColor }};border-radius:7px;font-family:'Nunito Sans',sans-serif;font-size:15px;color:#211E1E;background:#fff;outline:none;margin-bottom:6px" style-focus="border-color:#E93D44" />
+
+      <sc-if value="{{ hasError }}" hint-placeholder-val="{{ false }}">
+        <div style="font-size:12.5px;color:#BA2229;margin-bottom:10px">Enter a valid work email to continue.</div>
+      </sc-if>
+
+      <button onClick="{{ onSubmit }}" style="width:100%;margin-top:12px;cursor:pointer;font-family:'Nunito Sans',sans-serif;font-weight:700;font-size:15px;padding:12px 16px;border-radius:7px;border:none;{{ submitButtonStyle }}">{{ submitButtonLabel }}</button>
+
+      <p style="font-size:12.5px;line-height:1.5;color:#a2a19c;margin:16px 0 0;text-align:center">Tip: include &ldquo;admin&rdquo; in your email to preview the organizer view.</p>
+    </div>
+  </main>
+</div>
+
+</x-dc>
+<script type="text/x-dc" data-dc-script>
+function isValidEmail(v) {
+  return /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(v.trim());
+}
+
+class Component extends DCLogic {
+  state = { email: '', hasError: false, status: 'idle' };
+
+  submit() {
+    const email = this.state.email.trim();
+    if (!isValidEmail(email)) {
+      this.setState({ hasError: true });
+      return;
+    }
+    this.setState({ hasError: false, status: 'checking' });
+    setTimeout(() => {
+      const role = email.toLowerCase().includes('admin') ? 'admin' : 'attendee';
+      try {
+        localStorage.setItem('eventsHubRole', role);
+        localStorage.setItem('eventsHubEmail', email);
+      } catch (e) {}
+      window.location.href = './Community%20Events%20Hub%20-%20Feed.dc.html';
+    }, 700);
+  }
+
+  renderVals() {
+    const checking = this.state.status === 'checking';
+    return {
+      email: this.state.email,
+      onEmailChange: (e) => this.setState({ email: e.target.value, hasError: false }),
+      onKeyDown: (e) => { if (e.key === 'Enter') this.submit(); },
+      onSubmit: () => this.submit(),
+      hasError: this.state.hasError,
+      inputBorderColor: this.state.hasError ? '#BA2229' : '#E4E3DD',
+      submitButtonLabel: checking ? 'Checking your account\u2026' : 'Continue',
+      submitButtonStyle: checking
+        ? 'background:#F1F0EA;color:#a2a19c;'
+        : 'background:#E93D44;color:#fff;',
+    };
+  }
+}
+</script>
+</body>
+</html>

@@ -1,0 +1,223 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+
+<helmet>
+<style>
+@font-face{font-family:'Space Mono';src:url('./assets/fonts/SpaceMono-Regular.ttf') format('truetype');font-weight:400;font-style:normal}
+@font-face{font-family:'Space Mono';src:url('./assets/fonts/SpaceMono-Bold.ttf') format('truetype');font-weight:700;font-style:normal}
+@font-face{font-family:'Nunito Sans';src:url('./assets/fonts/NunitoSans-Variable.ttf') format('truetype-variations');font-weight:200 1000;font-style:normal}
+body{margin:0;background:#FCFBF5;font-family:'Nunito Sans',sans-serif;text-wrap:pretty}
+a{color:#1366B1}
+a:hover{color:#0f4f88}
+*{box-sizing:border-box}
+table{border-collapse:collapse;width:100%}
+</style>
+</helmet>
+<div style="min-height:100vh;background:#FCFBF5;color:#211E1E">
+  <header style="display:flex;align-items:center;justify-content:space-between;gap:16px;flex-wrap:wrap;padding:20px clamp(20px,4vw,56px);border-bottom:1px solid #E4E3DD">
+    <div style="display:flex;align-items:center;gap:12px">
+      <div style="width:34px;height:34px;background:#E93D44;border-radius:6px;display:flex;align-items:center;justify-content:center;flex:none">
+        <span style="font-family:'Space Mono',monospace;font-weight:700;color:#FCFBF5;font-size:18px">E</span>
+      </div>
+      <div style="font-family:'Space Mono',monospace;font-weight:700;font-size:18px;letter-spacing:0.02em">EVENTS HUB</div>
+    </div>
+    <div style="display:flex;align-items:center;gap:14px">
+      <span style="font-size:15px;color:#4a4846">Hey, Jordan</span>
+      <div style="width:36px;height:36px;border-radius:50%;background:#26BDFB;display:flex;align-items:center;justify-content:center;flex:none">
+        <span style="font-family:'Space Mono',monospace;font-weight:700;color:#fff;font-size:13px">JR</span>
+      </div>
+    </div>
+  </header>
+
+  <main style="max-width:1080px;margin:0 auto;padding:clamp(28px,4vw,52px) clamp(20px,4vw,56px) 80px">
+    <a href="#" style="display:inline-block;font-size:13.5px;color:#797873;text-decoration:none;margin-bottom:18px">&larr; All events</a>
+
+    <div style="display:flex;gap:18px;flex-wrap:wrap;align-items:center;justify-content:space-between;padding:18px 20px;background:#fff;border:1px solid #E4E3DD;border-radius:10px;margin-bottom:28px">
+      <div style="display:flex;gap:14px;align-items:center;min-width:260px">
+        <img src="{{ event.photo }}" alt="Event thumbnail" style="width:64px;height:64px;object-fit:cover;border-radius:8px;flex:none" />
+        <div>
+          <span style="display:inline-block;font-family:'Space Mono',monospace;font-weight:700;font-size:10.5px;letter-spacing:0.06em;padding:3px 7px;border-radius:5px;text-transform:uppercase;margin-bottom:6px;{{ event.categoryChipStyle }}">{{ event.categoryLabel }}</span>
+          <h1 style="font-family:'Space Mono',monospace;font-weight:700;font-size:17px;margin:0 0 4px;text-transform:uppercase;letter-spacing:0.005em">{{ event.title }}</h1>
+          <div style="font-size:13px;color:#5c5a57">{{ event.dateLabel }} &middot; {{ event.timeLabel }} &middot; {{ event.location }}</div>
+        </div>
+      </div>
+      <div style="display:flex;gap:22px;flex-wrap:wrap">
+        <div>
+          <div style="font-family:'Space Mono',monospace;font-weight:700;font-size:22px">{{ stats.filledLabel }}</div>
+          <div style="font-family:'Space Mono',monospace;font-weight:700;font-size:10.5px;letter-spacing:0.06em;color:#797873;text-transform:uppercase">Spots Filled</div>
+        </div>
+        <div>
+          <div style="font-family:'Space Mono',monospace;font-weight:700;font-size:22px;color:#1f6f57">{{ stats.confirmedCount }}</div>
+          <div style="font-family:'Space Mono',monospace;font-weight:700;font-size:10.5px;letter-spacing:0.06em;color:#797873;text-transform:uppercase">Confirmed</div>
+        </div>
+        <div>
+          <div style="font-family:'Space Mono',monospace;font-weight:700;font-size:22px;color:#a2a19c">{{ stats.cancelledCount }}</div>
+          <div style="font-family:'Space Mono',monospace;font-weight:700;font-size:10.5px;letter-spacing:0.06em;color:#797873;text-transform:uppercase">Cancelled</div>
+        </div>
+      </div>
+    </div>
+
+    <div style="display:flex;align-items:center;justify-content:space-between;gap:12px;flex-wrap:wrap;margin-bottom:14px">
+      <h2 style="font-family:'Space Mono',monospace;font-weight:700;font-size:15px;letter-spacing:0.02em;margin:0;text-transform:uppercase">Attendees &middot; {{ stats.totalCount }}</h2>
+      <div style="display:flex;gap:10px">
+        <button onClick="{{ onCopy }}" style="cursor:pointer;font-family:'Nunito Sans',sans-serif;font-weight:700;font-size:13.5px;padding:9px 16px;border-radius:7px;background:#fff;color:#211E1E;border:1px solid #E4E3DD;{{ copyButtonExtraStyle }}">{{ copyButtonLabel }}</button>
+        <button onClick="{{ onExportCsv }}" style="cursor:pointer;font-family:'Nunito Sans',sans-serif;font-weight:700;font-size:13.5px;padding:9px 16px;border-radius:7px;background:#E93D44;color:#fff;border:none">Export CSV</button>
+      </div>
+    </div>
+
+    <div style="background:#fff;border:1px solid #E4E3DD;border-radius:10px;overflow:hidden">
+      <table>
+        <thead>
+          <tr style="background:#F7F6F0">
+            <th style="text-align:left;padding:11px 16px;font-family:'Space Mono',monospace;font-weight:700;font-size:10.5px;letter-spacing:0.05em;color:#797873;text-transform:uppercase;border-bottom:1px solid #E4E3DD">Attendee</th>
+            <th style="text-align:left;padding:11px 16px;font-family:'Space Mono',monospace;font-weight:700;font-size:10.5px;letter-spacing:0.05em;color:#797873;text-transform:uppercase;border-bottom:1px solid #E4E3DD">Signed Up</th>
+            <th style="text-align:left;padding:11px 16px;font-family:'Space Mono',monospace;font-weight:700;font-size:10.5px;letter-spacing:0.05em;color:#797873;text-transform:uppercase;border-bottom:1px solid #E4E3DD">Status</th>
+          </tr>
+        </thead>
+        <tbody>
+          <sc-for list="{{ attendees }}" as="a" hint-placeholder-count="8">
+            <tr style="{{ a.rowStyle }}">
+              <td style="padding:11px 16px;border-bottom:1px solid #F1F0EA">
+                <div style="display:flex;align-items:center;gap:10px">
+                  <div style="width:26px;height:26px;border-radius:50%;flex:none;display:flex;align-items:center;justify-content:center;{{ a.avatarStyle }}">
+                    <span style="font-family:'Space Mono',monospace;font-weight:700;font-size:10px;color:#fff">{{ a.initials }}</span>
+                  </div>
+                  <div>
+                    <div style="font-size:14px;font-weight:700;{{ a.nameStyle }}">{{ a.name }}</div>
+                    <div style="font-size:12.5px;color:#a2a19c">{{ a.email }}</div>
+                  </div>
+                </div>
+              </td>
+              <td style="padding:11px 16px;border-bottom:1px solid #F1F0EA;font-size:13.5px;color:#5c5a57;font-family:'Space Mono',monospace">{{ a.signedUp }}</td>
+              <td style="padding:11px 16px;border-bottom:1px solid #F1F0EA">
+                <span style="font-size:11.5px;font-weight:700;padding:4px 9px;border-radius:5px;text-transform:uppercase;letter-spacing:0.03em;{{ a.statusStyle }}">{{ a.statusLabel }}</span>
+              </td>
+            </tr>
+          </sc-for>
+        </tbody>
+      </table>
+    </div>
+  </main>
+</div>
+
+</x-dc>
+<script type="text/x-dc" data-dc-script>
+const CATEGORY_STYLES = {
+  'Workshop': { background: '#32A887', color: '#fff' },
+};
+const AVATAR_COLORS = ['#26BDFB', '#32A887', '#8021F8', '#FF5D5E', '#1366B1', '#E93D44'];
+const FIRST_NAMES = ['Ava','Liam','Noah','Emma','Olivia','Lucas','Mia','Ethan','Sofia','Mateo','Zoe','Kevin','Grace','Diego','Priya','Omar','Nina','Chen','Aisha','Leo','Farah','Ben'];
+const LAST_NAMES = ['Garcia','Smith','Chen','Patel','Kim','Nguyen','Silva','Cohen','Lopez','Rossi','Khan','Novak','Reyes','Adeyemi','Fischer','Haddad','Sato','Mueller','Ortiz','Park','Alvarez','Petrov'];
+const TEAMS = ['Design Systems','Data Team','People Team','AI Platform','Platform Eng','Marketing','Bogot\u00e1 Office','Client Success'];
+const SIGNUP_DATES = ['AUG 1','AUG 1','AUG 2','AUG 2','AUG 3','AUG 3','AUG 4','AUG 5','AUG 5','AUG 6','AUG 6','AUG 7','AUG 7','AUG 8','AUG 8','AUG 9','AUG 9','AUG 10','AUG 10','AUG 10','AUG 4','AUG 6'];
+
+const EVENT = {
+  photo: './assets/photos/workshop-studio.jpg',
+  categoryLabel: 'Workshop',
+  title: 'Figma Variables Workshop',
+  dateLabel: 'THU, AUG 13',
+  timeLabel: '3:00 \u2013 5:00 PM',
+  location: 'Room 12 \u00b7 The Studio',
+  capacity: 20,
+};
+
+function buildAttendees() {
+  const list = [];
+  for (let i = 0; i < 22; i++) {
+    const first = FIRST_NAMES[i % FIRST_NAMES.length];
+    const last = LAST_NAMES[i % LAST_NAMES.length];
+    const name = first + ' ' + last;
+    const cancelled = i >= 20;
+    list.push({
+      name: name,
+      email: (first + '.' + last).toLowerCase() + '@company.com',
+      team: TEAMS[i % TEAMS.length],
+      signedUp: SIGNUP_DATES[i],
+      initials: first[0].toUpperCase() + last[0].toUpperCase(),
+      avatarStyle: 'background:' + (cancelled ? '#a2a19c' : AVATAR_COLORS[i % AVATAR_COLORS.length]) + ';',
+      cancelled: cancelled,
+      statusLabel: cancelled ? 'Cancelled' : 'Confirmed',
+      statusStyle: cancelled ? 'background:#F1F0EA;color:#a2a19c;' : 'background:rgba(50,168,135,0.15);color:#1f6f57;',
+      nameStyle: cancelled ? 'color:#a2a19c;text-decoration:line-through;' : 'color:#211E1E;',
+      rowStyle: cancelled ? 'opacity:0.7;' : '',
+    });
+  }
+  return list;
+}
+
+function toCsv(attendees) {
+  const esc = (v) => '"' + String(v).replace(/"/g, '""') + '"';
+  const header = ['Name', 'Email', 'Team', 'Signed Up', 'Status'];
+  const rows = attendees.map(a => [a.name, a.email, a.team, a.signedUp, a.statusLabel]);
+  return [header, ...rows].map(r => r.map(esc).join(',')).join('\n');
+}
+
+class Component extends DCLogic {
+  state = { copied: false };
+  attendees = buildAttendees();
+
+  handleExportCsv() {
+    const csv = toCsv(this.attendees);
+    const blob = new Blob([csv], { type: 'text/csv;charset=utf-8;' });
+    const url = URL.createObjectURL(blob);
+    const a = document.createElement('a');
+    a.href = url;
+    a.download = 'figma-variables-workshop-attendees.csv';
+    document.body.appendChild(a);
+    a.click();
+    document.body.removeChild(a);
+    URL.revokeObjectURL(url);
+  }
+
+  handleCopy() {
+    const csv = toCsv(this.attendees);
+    const done = () => {
+      this.setState({ copied: true });
+      setTimeout(() => this.setState({ copied: false }), 1600);
+    };
+    if (navigator.clipboard && navigator.clipboard.writeText) {
+      navigator.clipboard.writeText(csv).then(done).catch(done);
+    } else {
+      done();
+    }
+  }
+
+  renderVals() {
+    const confirmedCount = this.attendees.filter(a => !a.cancelled).length;
+    const cancelledCount = this.attendees.length - confirmedCount;
+    const cat = CATEGORY_STYLES[EVENT.categoryLabel];
+
+    return {
+      event: {
+        photo: EVENT.photo,
+        categoryLabel: EVENT.categoryLabel,
+        categoryChipStyle: 'background:' + cat.background + ';color:' + cat.color + ';',
+        title: EVENT.title,
+        dateLabel: EVENT.dateLabel,
+        timeLabel: EVENT.timeLabel,
+        location: EVENT.location,
+      },
+      stats: {
+        filledLabel: confirmedCount + '/' + EVENT.capacity,
+        confirmedCount: confirmedCount,
+        cancelledCount: cancelledCount,
+        totalCount: this.attendees.length,
+      },
+      attendees: this.attendees,
+      onExportCsv: () => this.handleExportCsv(),
+      onCopy: () => this.handleCopy(),
+      copyButtonLabel: this.state.copied ? 'Copied!' : 'Copy to clipboard',
+      copyButtonExtraStyle: this.state.copied ? 'background:#F1F0EA;color:#1f6f57;border-color:#32A887;' : '',
+    };
+  }
+}
+</script>
+</body>
+</html>
