@@ -10,10 +10,7 @@ Any AI assistant is allowed (GitHub Copilot, Cursor, Windsurf, Replit). **The wo
 |---|---|---|---|
 | 1 — Warm-up script | [`tier-1-warmup/`](tier-1-warmup/) | 25 min | Basic prompting, happy-path verification |
 | 2 — Legacy rescue | [`tier-2-legacy-rescue/`](tier-2-legacy-rescue/) | 1–2 hours | Code comprehension with AI, testing, refactoring, bug hunting |
-| 3 — Mini product | [`tier-3-mini-product/`](tier-3-mini-product/) | 1 day (8 h max) | Agentic workflow, conventions, multi-file work, security, delivery |
-| 3 — Vibe MVP (Variant A) | [`tier-3-vibe-mvp/`](tier-3-vibe-mvp/) | 2–3 hours | Vibe coding an MVP from scratch: brief, iteration, security pass, verification |
-| 3 — Vibe MVP (Variant B) | [`tier-3-vibe-mvp-expense-splitter/`](tier-3-vibe-mvp-expense-splitter/) | 2–3 hours | Same process as Variant A, expense-splitting scenario — money math must be hand-verified |
-| 4 — Agent skill builder | [`tier-4-agent-skill/`](tier-4-agent-skill/) | 2–3 hours | Designing and testing a reusable, agent-agnostic skill; iteration on the skill's own instructions |
+| 3 — Vibe MVP | [`tier-3-vibe-mvp/`](tier-3-vibe-mvp/) | 2–3 hours | Vibe coding an MVP from scratch: brief, iteration, security pass, verification |
 
 ## Universal deliverables (all tiers)
 
@@ -34,7 +31,3 @@ Every tier requires the same three artifacts:
 - AI assistance is **expected and required** — using it well is the whole point.
 - Everything the AI claims, you verify. Reporting an AI-hallucinated "bug" or shipping unverified code counts **against** you.
 - Time boxes are honest limits. Unfinished is acceptable; undocumented is not.
-
-## For evaluators
-
-Grading materials (planted-bug keys, review protocols, trap datasets) live in [`evaluator/`](evaluator/). **Do not distribute that folder to candidates** — when publishing this repo for a cohort, delete `evaluator/` or keep it in a separate private repo.
